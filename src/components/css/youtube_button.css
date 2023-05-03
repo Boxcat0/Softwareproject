@@ -1,0 +1,16 @@
+.youtube_button{
+    border: 3px solid pink;
+    background-color: var(--clr-white);
+    color: var(--dark-shadow);
+}
+
+.youtube_menu{
+    display: flex;
+    justify-content: center;
+    margin-left: -840px;
+}
+
+.Banner_menu{
+    justify-content: center;
+    margin-left: 250px;
+}

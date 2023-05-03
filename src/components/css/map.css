@@ -1,0 +1,6 @@
+.kakaoMap{
+    height: 71vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
