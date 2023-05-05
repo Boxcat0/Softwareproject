@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Navbar from '../../softwareproject2/src/components/Navbar';
-import Title from '../../softwareproject2/src/components/Title';
-import MenuButton from '../../softwareproject2/src/components/menuButton';
-import LoginPage from '../../softwareproject2/src/components/LoginPage';
+import Navbar from '../../Softwareproject/src/components/Navbar';
+import Title from '../../Softwareproject/src/components/Title';
+import MenuButton from '../../Softwareproject/src/components/menuButton';
+import LoginPage from '../../Softwareproject/src/components/LoginPage';
 import './App.css';
-import Map from "../../softwareproject2/src/components/Map";
+import Map from "../../Softwareproject/src/components/Map";
 import Main from "./components/main";
-import SearchBar from "../../softwareproject2/src/components/SearchBar";
-import CreateInfo from "../../softwareproject2/src/components/CreateInfo";
+import SearchBar from "../../Softwareproject/src/components/SearchBar";
+import CreateInfo from "../../Softwareproject/src/components/CreateInfo";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
