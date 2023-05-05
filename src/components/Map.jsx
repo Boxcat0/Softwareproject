@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./css/map.css";
 
 function Map() {
+    useEffect(() => {
+        if (sessionStorage.getItem("toReload") === "False") {
+            window.location.reload();
+            sessionStorage.setItem("toReload", "true");
+        }
+    });
     const [data, setData] = useState({});
     let latitude = parseFloat(sessionStorage.getItem("latitude"));
     let longitude = parseFloat(sessionStorage.getItem("longitude"));
