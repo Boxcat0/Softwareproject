@@ -18,6 +18,9 @@ function MenuButton() {
         sessionStorage.setItem("latitude","35.1167");
         sessionStorage.setItem("longitude","128.9685");
     }
+    const toReload =() =>{
+        sessionStorage.setItem("toReload","true");
+    }
 
     return (
         <div>
@@ -36,6 +39,11 @@ function MenuButton() {
                     <div className="location">
                         <Link to ="/map">
                             <button className="location_my" onClick={mapSetting}>내 위치</button>
+                        </Link>
+                    </div>
+                    <div className="location">
+                        <Link to ="/PostFind">
+                            <button className="location_my" onClick={toReload}>검색</button>
                         </Link>
                     </div>
                 </div>

@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 import SearchBar from "./SearchBar"
 import Youtube from "./YoutubeSlider"
 import './css/youtube_button.css'
 import Banner from "./banner"
 
-function main(){
+
+function useMain(){
+    useEffect(() => {
+        if (sessionStorage.getItem("toReload") === "False") {
+            window.location.reload();
+            sessionStorage.setItem("toReload", "not");
+        }
+    },[]);
     return(
+
         <div>
             <SearchBar />
             <div className="Banner_menu">
@@ -18,5 +26,4 @@ function main(){
     )
 
 }
-
-export default main;
+export default useMain;
