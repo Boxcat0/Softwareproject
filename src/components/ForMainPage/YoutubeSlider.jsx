@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
 import axios from 'axios';
-import "./css/youtube_button.css"
+import "../css/youtube_button.css"
 
 const API_KEY = 'AIzaSyC6WrX3hjBvtPWMZgT5SSz_m9vwxsVDER0';
 
@@ -46,7 +46,7 @@ function YoutubeSlider() {
         if (playing) {
             interval = setInterval(() => {
                 nextVideo();
-            }, 10000);
+            }, 5000);
         }
         return () => clearInterval(interval);
     }, [playing, nextVideo]);
@@ -57,8 +57,8 @@ function YoutubeSlider() {
 
     return (
         <div>
-            <button onClick={prevVideo} className="youtube_button">Previous</button>
-            <button onClick={nextVideo} className="youtube_button">Next</button>
+            <button onClick={prevVideo} className="youtube_button">←</button>
+            <button onClick={nextVideo} className="youtube_button">→</button>
             <button onClick={togglePlaying} className="youtube_button">
                 {playing ? 'Pause' : 'Play'}
             </button>
@@ -71,8 +71,9 @@ function YoutubeSlider() {
                             position: 'absolute',
                             top: 0,
                             left: 0,
-                            height: '400%',
-                            width: '400%',
+                            height: '600%',
+                            width: '600%',
+                            transform: 'translate(-3%, 0%)'
                         }}
                         src={`https://www.youtube.com/embed/${videos[i]}`}
                         frameBorder="0"

@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
-import SearchBar from "./SearchBar"
-import Youtube from "./YoutubeSlider"
+import SearchBar from "./ForMainPage/SearchBar"
+import Youtube from "./ForMainPage/YoutubeSlider"
 import './css/youtube_button.css'
-import Banner from "./banner"
+import Banner from "./ForMainPage/banner"
 
 
 function useMain(){
@@ -13,11 +13,13 @@ function useMain(){
         }
     },[]);
     return(
-
         <div>
-            <SearchBar />
+
             <div className="Banner_menu">
                 <Banner/>
+            </div>
+            <div className ="SearchBar">
+                <SearchBar />
             </div>
             <div className="youtube_menu">
                 <Youtube/>

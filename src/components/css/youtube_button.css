@@ -13,4 +13,10 @@
 .Banner_menu{
     justify-content: center;
     margin-left: 250px;
+    margin-bottom: -20px;
+}
+.bannerButton{
+    border: 3px solid #FFC8DD;
+    background-color: var(--clr-white);
+    color : black;
 }

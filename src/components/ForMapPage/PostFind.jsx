@@ -49,7 +49,9 @@ const Post = () => {
     }
 
     return (
-        <DaumPostcode onComplete={handleComplete}/>
+        <div className ="FindPost">
+            <DaumPostcode onComplete={handleComplete}/>
+        </div>
     );
 }
 

@@ -1,10 +1,13 @@
 import React from "react";
-import "./css/Formdesign.css"
+import "../css/Formdesign.css"
+import {useNavigate } from "react-router-dom";
 
 function CreateInfo(){
+    const history = useNavigate();
     function pw_check(){
         if(document.getElementById("password").value.length <5){
             alert("비밀번호는 5자리 이상 입력해주세요");
+            history("/CreateInfo");
             return false;
         }
     }

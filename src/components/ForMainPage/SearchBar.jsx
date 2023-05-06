@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import {useNavigate } from "react-router-dom";
-import "./css/ico.css";
+import "../css/ico.css";
+import "../css/SearchBar.css"
 
 function SearchBar() {
     const [search,setSearch] = useState("");
@@ -32,7 +33,6 @@ function SearchBar() {
         }
     };
     return (
-
         <form onSubmit={handleSubmit}>
             <label>
                 <input type="text" name="search" id = "search" placeholder="어디서 근육 커질래?" value={search} onChange={(e) => setSearch(e.target.value)}/>

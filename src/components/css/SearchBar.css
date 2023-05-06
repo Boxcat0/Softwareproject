@@ -1,0 +1,5 @@
+.SearchBar{
+    align-items: center;
+    align-content: center;
+    transform: translate( 2%, -50%) scale(1.5);
+}

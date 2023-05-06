@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./css/locationbutton.css";
+import "../css/locationbutton.css";
 
 function MenuButton() {
     const history = useNavigate();

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./css/map.css";
+import "../css/map.css";
 
 function Map() {
     useEffect(() => {

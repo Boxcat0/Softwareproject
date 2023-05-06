@@ -9,6 +9,8 @@
   --transition: all 0.3s ease-in-out;
   --clr-primary-5: #0088a9;
   --clr-primary-6: #00627d;
+  --clr-hover : #87CEFAFF;
+  --sakura : #FFC8DD;
 }
 
 nav {
@@ -23,7 +25,7 @@ nav {
   max-width: 1170px;
   margin: 0 auto;
   padding: 1rem 2rem;
-  background-color: #f5f5f5;
+  background-color: var(--sakura);
 }
 
 .nav-toggle {
@@ -139,7 +141,7 @@ button {
 
 
 button:hover {
-  background-color: var(--clr-primary-6);
+  background-color: var(--clr-hover);
 }
 
 .searchBar_menu{
