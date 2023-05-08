@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
 import "./css/Loadingdesign.css"
+import MapButton from "./ForMapPage/MapButton";
 
 
 function useLoading(){
@@ -16,6 +17,7 @@ function useLoading(){
     },[]);
     return(
         <div>
+            <MapButton />
             <div className="LoadingButton">
                 <div className="Loading_location">
                     <Link to="/PostFind">

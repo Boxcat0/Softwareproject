@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../css/map.css";
+import gym_data from "../gym_data.json";
+import gym_data_seoul from "../gymdata.json";
 
 function Map() {
     useEffect(() => {
@@ -8,43 +10,44 @@ function Map() {
             sessionStorage.setItem("toReload", "true");
         }
     });
-    const [data, setData] = useState({});
     let latitude = parseFloat(sessionStorage.getItem("latitude"));
     let longitude = parseFloat(sessionStorage.getItem("longitude"));
     if (latitude == null || longitude == null) {
         latitude = 35.1167;
         longitude = 128.9685;
     }
-
     useEffect(() => {
-        async function fetchData() {
-            const response = await fetch("/gymdata.json");
-            const data = await response.json();
-            setData(data);
-        }
-        fetchData().then();
-    }, []);
+        const container = document.getElementById("map");
+        const options = {
+            center: new window.kakao.maps.LatLng(latitude, longitude),
+            level: 3,
+        };
+        const map = new window.kakao.maps.Map(container, options);
+        const markerPosition = new window.kakao.maps.LatLng(latitude, longitude);
+        const marker = new window.kakao.maps.Marker({
+            position: markerPosition,
+        });
 
-    useEffect(() => {
-        if (data) {
-            const container = document.getElementById("map");
-            const options = {
-                center: new window.kakao.maps.LatLng(latitude, longitude),
-                level: 3,
-            };
-            const map = new window.kakao.maps.Map(container, options);
-            const markerPosition = new window.kakao.maps.LatLng(latitude, longitude);
-            const marketGym = new window.kakao.maps.LatLng(data.Lat, data.Lng);
+        gym_data.positions.map((positions, index) =>//반복문처럼 json파일 다 돌아다니면서 확인
+        {
+            const markerPosition = new window.kakao.maps.LatLng(positions.Lat, positions.Lng);
             const marker = new window.kakao.maps.Marker({
                 position: markerPosition,
             });
-            const marker2 = new window.kakao.maps.Marker({
-                position: marketGym,
+            marker.setMap(map);
+            return null;
+        });
+        gym_data_seoul.positions.map((positions, index) =>//반복문처럼 json파일 다 돌아다니면서 확인
+        {
+            const markerPosition = new window.kakao.maps.LatLng(positions.Lat, positions.Lng);
+            const marker = new window.kakao.maps.Marker({
+                position: markerPosition,
             });
             marker.setMap(map);
-            marker2.setMap(map);
-        }
-    }, [latitude, longitude,data]);
+            return null;
+        });
+        marker.setMap(map);
+    }, [latitude, longitude]);
 
     return (
         <div className="kakaoMap">
