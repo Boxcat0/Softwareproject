@@ -35,6 +35,19 @@ function Map() {
                 position: markerPosition,
             });
             marker.setMap(map);
+            var infowindow = new window.kakao.maps.InfoWindow(
+                {
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">' + positions.title + '</div>'
+                }
+            )
+            window.kakao.maps.event.addListener(marker, 'mouseover', function() {
+                // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+                infowindow.open(map, marker);
+            });
+            window.kakao.maps.event.addListener(marker, 'mouseout', function() {
+                // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+                infowindow.close();
+            });
             return null;
         });
         gym_data_seoul.positions.map((positions, index) =>//반복문처럼 json파일 다 돌아다니면서 확인
@@ -44,6 +57,19 @@ function Map() {
                 position: markerPosition,
             });
             marker.setMap(map);
+            var infowindow = new window.kakao.maps.InfoWindow(
+                {
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">' + positions.title + '</div>'
+                }
+            )
+            window.kakao.maps.event.addListener(marker, 'mouseover', function() {
+                // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+                infowindow.open(map, marker);
+            });
+            window.kakao.maps.event.addListener(marker, 'mouseout', function() {
+                // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+                infowindow.close();
+            });
             return null;
         });
         marker.setMap(map);
