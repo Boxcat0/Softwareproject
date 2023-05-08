@@ -17,7 +17,6 @@ function useLoading(){
     },[]);
     return(
         <div>
-            <MapButton />
             <div className="LoadingButton">
                 <div className="Loading_location">
                     <Link to="/PostFind">

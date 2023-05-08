@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../css/map.css";
-import gym_data from "../gym_data.json";
-import gym_data_seoul from "../gymdata.json";
+import gym_data from "../JsonFile/gym_data.json";
+import gym_data_seoul from "../JsonFile/gymdata.json";
 
 function Map() {
     useEffect(() => {
@@ -48,6 +48,10 @@ function Map() {
                 // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
                 infowindow.close();
             });
+            window.kakao.maps.event.addListener(marker, 'click', function(){
+                sessionStorage.setItem('targetNumber',positions.number);
+                window.location.assign("/SeparatePage");
+            });
             return null;
         });
         gym_data_seoul.positions.map((positions, index) =>//반복문처럼 json파일 다 돌아다니면서 확인
@@ -69,6 +73,10 @@ function Map() {
             window.kakao.maps.event.addListener(marker, 'mouseout', function() {
                 // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
                 infowindow.close();
+            });
+            window.kakao.maps.event.addListener(marker, 'click', function(){
+                sessionStorage.setItem('targetNumber',positions.number);
+                window.location.assign("/SeparatePage");
             });
             return null;
         });

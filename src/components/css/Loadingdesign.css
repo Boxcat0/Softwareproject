@@ -16,3 +16,17 @@
     align-items: center;
     margin-bottom: 100px;
 }
+
+.Loading_main2{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.T_button{
+    display : flex;
+    border : 3px solid skyblue;
+    background-color: var(--clr-white);
+    color : black;
+}

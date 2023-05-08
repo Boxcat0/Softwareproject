@@ -11,6 +11,7 @@
 }
 
 .Banner_menu{
+    z-index: 0;
     justify-content: center;
     margin-left: 250px;
     margin-bottom: -20px;

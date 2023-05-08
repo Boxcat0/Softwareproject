@@ -12,7 +12,9 @@
   --clr-hover : #87CEFAFF;
   --sakura : #FFC8DD;
 }
-
+.Naav{
+  z-index: 1;
+}
 nav {
   height: 3rem;
   background: var(--clr-white);

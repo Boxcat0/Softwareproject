@@ -46,7 +46,7 @@ function LoginPage() {
                         </label>
                     </div>
                     <button className="bannerButton" type="submit">로그인</button>
-                    <Link to="/CreateInfo">
+                    <Link to="/chooseCreate">
                         <button className="bannerButton">회원가입</button>
                     </Link>
                 </form>
