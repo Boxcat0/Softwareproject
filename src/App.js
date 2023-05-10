@@ -16,16 +16,6 @@ import CreateInfoTrainer from "./components/ForUser/CreateInfotrainer";
 import MiddleSelect from "./components/ForUser/MiddleSelect_CreateInfo";
 
 function App() {
-  const [message, setMessage]=useState([]);
-  useEffect(()=>{
-    fetch("/hello")
-        .then((res)=>{
-          return res.json();
-        })
-        .then((data)=>{
-          setMessage(data);
-        });
-  },[]);
   const [showLogin, setShowLogin] = useState(false);
   return (
      <div>
@@ -51,9 +41,6 @@ function App() {
              <Route exact path="/Map" element={<Map />} />
              <Route exact path="/CreateInfo" element={<CreateInfo />}/>
            </Routes>
-           <ul>
-             {message.map((v,idx)=><li key={`${idx}-${v}`}>{v}</li>)}
-           </ul>
          </div>
        </BrowserRouter>
      </div>
