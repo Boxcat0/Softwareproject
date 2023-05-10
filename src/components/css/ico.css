@@ -7,3 +7,8 @@ img{
     height : 40px;
     width : 40px;
 }
+
+.PNG{
+    zoom : 550%;
+    transform: scaleX(2.5) scaleY(0.7);
+}

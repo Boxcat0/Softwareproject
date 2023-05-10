@@ -42,6 +42,8 @@ nav {
 
 .login-menu {
   display: none;
+  position: absolute;
+  z-index: 9999;
 }
 
 .title-Center{

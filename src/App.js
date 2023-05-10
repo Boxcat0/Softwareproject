@@ -10,7 +10,6 @@ import Map from "./components/ForMapPage/Map";
 import Main from "./components/main";
 import SearchBar from "./components/ForMainPage/SearchBar";
 import CreateInfo from "./components/ForUser/CreateInfo";
-import Post from "./components/ForMapPage/PostFind";
 import Loading from "./components/FirstPage";
 import CreateInfoGym from "./components/ForUser/CreateInfoGym";
 import CreateInfoTrainer from "./components/ForUser/CreateInfotrainer";
@@ -38,7 +37,6 @@ function App() {
              <Route exact path="/chooseCreate" element={<MiddleSelect/>}/>
              <Route exact path="/CreateInfo_G" element={<CreateInfoGym/>}/>
              <Route exact path="/CreateInfo_t" element={<CreateInfoTrainer/>}/>
-             <Route exact path="/PostFind" element={<Post />} />
              <Route exact path="/login" element={<LoginPage />} />
              <Route exact path="/Map" element={<Map />} />
              <Route exact path="/CreateInfo" element={<CreateInfo />}/>

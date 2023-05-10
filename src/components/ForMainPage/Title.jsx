@@ -1,17 +1,25 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
+import "../css/ico.css"
 
 function Title() {
     const [IsLogin] = useState(sessionStorage.getItem("isLoggedIn")==="true");
+    const ChangeEvent=()=>{
+        sessionStorage.setItem("toReload","true");
+    }
     return (
        <div>
            {IsLogin?(
                <Link to="/mainPage">
-                   <h1>근육 커GYM</h1>
+                   <div className ="PNG">
+                       <img src={`${process.env.PUBLIC_URL}/근육 커GYM.png`} alt="title" />
+                   </div>
                </Link>
            ):(
-               <Link to="/">
-                   <h1>근육 커GYM</h1>
+               <Link to="/" onClick={ChangeEvent}>
+                   <div className ="PNG">
+                       <img src={`${process.env.PUBLIC_URL}/근육 커GYM.png`} alt="title" />
+                   </div>
                </Link>
            )
            }
