@@ -51,17 +51,16 @@ function SearchBar() {
     };
     //onChange={(e) => setSearch(e.target.value)}
     return (
-            <form onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
             <label>
                 <input type="text" name="search" id = "search" placeholder="어디서 근육 커질래?"  required={true} onChange={handleInput} value={enroll_company.address} />
-                <button type="submit"  >
+                <button className= "bannerButton" onClick={handleComplete}>
                     <div className= "icon">
                         <img src={`${process.env.PUBLIC_URL}/search.ico`} alt="search" />
                     </div>
                 </button>
-            </label>
-                <button onClick={handleComplete}>우편번호 찾기</button>
                 {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
+            </label>
         </form>
     );
 }

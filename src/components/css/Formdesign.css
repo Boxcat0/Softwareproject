@@ -1,15 +1,31 @@
 .CreateForm{
     display : flex;
     border : 3px solid skyblue;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -90%) scale(1.2);
+    transform: translate(-50%, -70%) scale(1.2);
+}
+.CreateForm_g{
+    display : flex;
+    border : 3px solid skyblue;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+.CreateForm_t{
+    display : flex;
+    border : 3px solid skyblue;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
 }
 .CreateForm2{
     display : flex;
     border : 3px solid pink;
-    position: absolute;
+    position: fixed;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -90%) scale(0.8);

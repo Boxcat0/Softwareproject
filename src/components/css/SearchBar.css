@@ -3,3 +3,7 @@
     align-content: center;
     transform: translate( 2%, -50%) scale(1.5);
 }
+.form
+{
+    background : rgba(255, 255, 255, 1);
+}

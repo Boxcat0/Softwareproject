@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import "./css/Loadingdesign.css"
 
@@ -7,13 +7,6 @@ function useLoading(){
     const toPostFind = () =>{
         sessionStorage.setItem("toReload","true");
     }
-    useEffect(() => {
-        if (sessionStorage.getItem("toReload") === "False") {
-            window.location.reload();
-            sessionStorage.setItem("toReload", "not");
-
-        }
-    },[]);
     return(
         <div>
             <div className="LoadingButton">

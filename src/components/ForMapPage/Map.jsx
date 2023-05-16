@@ -2,14 +2,9 @@ import React, { useEffect } from "react";
 import "../css/map.css";
 import gym_data from "../JsonFile/gym_data.json";
 import gym_data_seoul from "../JsonFile/gymdata.json";
+import SeparatePage from "./SeparatePage";
 
 function Map() {
-    useEffect(() => {
-        if (sessionStorage.getItem("toReload") === "False") {
-            window.location.reload();
-            sessionStorage.setItem("toReload", "true");
-        }
-    });
     let latitude = parseFloat(sessionStorage.getItem("latitude"));
     let longitude = parseFloat(sessionStorage.getItem("longitude"));
     if (latitude == null || longitude == null) {
@@ -43,6 +38,7 @@ function Map() {
             window.kakao.maps.event.addListener(marker, 'mouseover', function() {
                 // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
                 infowindow.open(map, marker);
+                console.log(positions.title);
             });
             window.kakao.maps.event.addListener(marker, 'mouseout', function() {
                 // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
@@ -50,6 +46,7 @@ function Map() {
             });
             window.kakao.maps.event.addListener(marker, 'click', function(){
                 sessionStorage.setItem('targetNumber',positions.number);
+                sessionStorage.setItem('targetName', positions.title);
                 window.location.assign("/SeparatePage");
             });
             return null;
@@ -69,6 +66,7 @@ function Map() {
             window.kakao.maps.event.addListener(marker, 'mouseover', function() {
                 // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
                 infowindow.open(map, marker);
+                console.log(positions.name);
             });
             window.kakao.maps.event.addListener(marker, 'mouseout', function() {
                 // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
@@ -76,6 +74,7 @@ function Map() {
             });
             window.kakao.maps.event.addListener(marker, 'click', function(){
                 sessionStorage.setItem('targetNumber',positions.number);
+                sessionStorage.setItem('targetName', positions.title);
                 window.location.assign("/SeparatePage");
             });
             return null;

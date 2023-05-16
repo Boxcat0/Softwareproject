@@ -3,13 +3,20 @@ import { useTransition, animated } from 'react-spring';
 import "../css/youtube_button.css"
 
 const images = [
-    '시판1.png',
-    '시판2.png'
+    {
+        url: '시판1.png',//이벤트
+        link: '/mainPage',
+    },
+    {
+        url: '시판2.png',//중고거래
+        link: 'www.google.com',
+    }
 ];
 
 function SlideShow() {
     const [playing] = useState(true);
     const [index, setIndex] = useState(0);
+
     const nextVideo = useCallback(() => {
         setIndex((index + 1) % images.length);
     }, [index]);
@@ -23,7 +30,7 @@ function SlideShow() {
         }
         return () => clearInterval(interval);
     }, [playing, nextVideo]);
-    // react-spring useTransition hook을 이용해 index 변경시 슬라이드 애니메이션 실행
+
     const transitions = useTransition(index, {
         from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
         enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
@@ -44,7 +51,7 @@ function SlideShow() {
             <button className ="bannerButton" onClick={nextImage}>→</button>
             <div style={{ position: 'relative', height: '300px' }}>
                 {transitions((style, i) => (
-                    <animated.img
+                    <animated.a
                         key={i}
                         style={{
                             ...style,
@@ -52,11 +59,23 @@ function SlideShow() {
                             top: 0,
                             left: -50,
                             height: '200px',
-                            width: '85%',
+                            width: '90%',
+
                         }}
-                        src={images[i]}
-                        alt="slide"
-                    />
+                        href={images[i].link}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <animated.img
+                            style={{
+                                width: '100%',
+                                height: '100%',
+
+                            }}
+                            src={images[i].url}
+                            alt="slide"
+                        />
+                    </animated.a>
                 ))}
             </div>
         </div>

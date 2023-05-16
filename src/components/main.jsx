@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import SearchBar from "./ForMainPage/SearchBar"
 import Youtube from "./ForMainPage/YoutubeSlider"
 import './css/youtube_button.css'
@@ -6,12 +6,6 @@ import Banner from "./ForMainPage/banner"
 
 
 function useMain(){
-    useEffect(() => {
-        if (sessionStorage.getItem("toReload") === "False") {
-            window.location.reload();
-            sessionStorage.setItem("toReload", "not");
-        }
-    },[]);
     return(
         <div>
 

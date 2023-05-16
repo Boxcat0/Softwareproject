@@ -4,9 +4,6 @@ import "../css/ico.css"
 
 function Title() {
     const [IsLogin] = useState(sessionStorage.getItem("isLoggedIn")==="true");
-    const ChangeEvent=()=>{
-        sessionStorage.setItem("toReload","true");
-    }
     return (
        <div>
            {IsLogin?(
@@ -16,7 +13,7 @@ function Title() {
                    </div>
                </Link>
            ):(
-               <Link to="/" onClick={ChangeEvent}>
+               <Link to="/">
                    <div className ="PNG">
                        <img src={`${process.env.PUBLIC_URL}/근육 커GYM.png`} alt="title" />
                    </div>

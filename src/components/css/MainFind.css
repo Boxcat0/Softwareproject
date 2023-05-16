@@ -1,0 +1,16 @@
+.MainFind{
+    left: 50%;
+    display: flex;
+    transform: translate(-50%, -10%) scaleX(2) scaleY(1.5);
+    position : fixed;
+    z-index: 200000;
+}
+
+.WE {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    display: flex;
+    zoom: 1300%;
+}

@@ -11,9 +11,13 @@ import Main from "./components/main";
 import SearchBar from "./components/ForMainPage/SearchBar";
 import CreateInfo from "./components/ForUser/CreateInfo";
 import Loading from "./components/FirstPage";
+import MyInfo from "./components/ForUser/MyInfo";
 import CreateInfoGym from "./components/ForUser/CreateInfoGym";
 import CreateInfoTrainer from "./components/ForUser/CreateInfotrainer";
 import MiddleSelect from "./components/ForUser/MiddleSelect_CreateInfo";
+import FindPage from "./components/ForMapPage/FindPage";
+import SeparatePage from "./components/ForMapPage/SeparatePage";
+
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -34,10 +38,13 @@ function App() {
            </div>
            <Routes>
              <Route exact path="/" element={<Loading />} />
+             <Route exact path="/myInfo" element ={<MyInfo />}/>
              <Route exact path="/mainPage" element={<Main />}/>
+             <Route exact path="/PostFind" element={<FindPage />}/>
              <Route exact path="/chooseCreate" element={<MiddleSelect/>}/>
              <Route exact path="/CreateInfo_G" element={<CreateInfoGym/>}/>
              <Route exact path="/CreateInfo_t" element={<CreateInfoTrainer/>}/>
+             <Route exact path="/SeparatePage" element={<SeparatePage />}/>
              <Route exact path="/login" element={<LoginPage />} />
              <Route exact path="/Map" element={<Map />} />
              <Route exact path="/CreateInfo" element={<CreateInfo />}/>
