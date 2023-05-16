@@ -17,6 +17,7 @@ import MiddleSelect from "./components/ForUser/MiddleSelect_CreateInfo";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
+
   return (
      <div>
        <BrowserRouter>
@@ -42,6 +43,7 @@ function App() {
              <Route exact path="/CreateInfo" element={<CreateInfo />}/>
            </Routes>
          </div>
+
        </BrowserRouter>
      </div>
   );

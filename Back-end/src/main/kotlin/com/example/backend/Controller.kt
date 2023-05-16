@@ -1,16 +1,15 @@
 package com.example.backend
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
-@RequestMapping("/restaurants")
+@RequestMapping("/Account")
 class Controller(@Autowired val repo: Repo) {
 
 
-    @GetMapping
+  /*  @GetMapping
     fun getCount(): Int {
         return repo.findAll().count()
     }
@@ -46,5 +45,5 @@ class Controller(@Autowired val repo: Repo) {
         return repo.findByRestaurantId(restaurantId = id)?.let {
             repo.save(it.copy(name = "Update"))
         }
-    }
+    }*/
 }
