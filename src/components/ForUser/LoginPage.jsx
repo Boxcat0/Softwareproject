@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import "../css/locationbutton.css";
 import "./CreateInfo";
+import axios from "axios";
+import qs from "qs";
 
 function LoginPage() {
-    const history = useNavigate();
+    const [username, setId] = useState('');
+    const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem("isLoggedIn") === "true");
+
     useEffect(() => {
         const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
         setIsLoggedIn(isLoggedIn);
     }, []);
-    const onSubmit = (event) => {
-        event.preventDefault();
-        const username = event.target.username.value;
-        const password = event.target.password.value;
-        sessionStorage.setItem("ID",username);
-        if (username === "admin" && password === "1234") {
-            sessionStorage.setItem("isLoggedIn", "true");
-            setIsLoggedIn(true);
-            history("/mainPage");
-        } else {
-            alert("아이디나 비밀번호가 틀렸습니다.");
-        }
-        window.location.reload();
+    const onSubmit = (e) => {
+       e.preventDefault();
+       axios.post('/loginPage',qs.stringify({
+           id : username,
+           password : password
+       }))
+           .then((response) => {
+               console.log("success");
+           })
+           .catch((error)=>{
+               console.error(error);
+           });
     };
 
     return (
@@ -34,15 +36,15 @@ function LoginPage() {
                     <button onClick={() => { sessionStorage.setItem("isLoggedIn", "false"); setIsLoggedIn(false);}}>로그아웃</button>
                 </div>
             ) : (
-                <form onSubmit={onSubmit}>
+                <form method ="post" onSubmit={onSubmit}>
                     <div>
                         <label htmlFor="username">
-                            <input type="text" id="username" name="username" placeholder="아이디를 입력하세요" />
+                            <input type="text" id="username" name="username" value={username} onChange={(e)=>setId(e.target.value)} placeholder="아이디를 입력하세요" />
                         </label>
                     </div>
                     <div>
                         <label htmlFor="password">
-                            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" />
+                            <input type="password" id="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="비밀번호를 입력하세요" />
                         </label>
                     </div>
                     <button className="bannerButton" type="submit">로그인</button>

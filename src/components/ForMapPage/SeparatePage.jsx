@@ -3,6 +3,7 @@ import axios from 'axios';
 import "../css/map.css"
 import "../css/youtube_button.css"
 import {Link} from "react-router-dom";
+import Review from "./ReviewPage";
 
 
 function useSeparatePage(){
@@ -14,12 +15,15 @@ function useSeparatePage(){
     const handleComplete = (data) => {
         setPopup(!popup);
     }
+    const handleSession =() =>{
+        sessionStorage.removeItem("targetName");
+    }
     return(
        <div className ="modal">
            <div className="modal-container">
                <div>
                    <Link to="/Map">
-                       <button className="bannerButton">뒤로가기</button>
+                       <button className="bannerButton" onClick={handleSession}>뒤로가기</button>
                    </Link>
                    <h1><span>{sessionStorage.getItem("targetName")}</span></h1>
                </div>
@@ -34,6 +38,7 @@ function useSeparatePage(){
                </div>
                <div>
                    <button className="bannerButton" onClick={handleComplete}>리뷰 확인하기</button>
+                   {popup&&<Review></Review>}
                </div>
            </div>
        </div>
