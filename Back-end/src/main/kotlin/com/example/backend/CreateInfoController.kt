@@ -1,9 +1,12 @@
 package com.example.backend
 
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpSession
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 /*
 
@@ -27,13 +30,13 @@ val collection = database.getCollection(collectionName)
 */
 
 @RestController
-class CreateInfoController(@Autowired val repo: Repo) {
+class CreateInfoController(@Autowired val repo: Repo, private val session: HttpSession) {
 
- /*   @GetMapping("/CreateInfo")
-    fun getCount(): Int {
-        println(repo.findAll().count());
-        return repo.findAll().count()
-    }*/
+    /*   @GetMapping("/CreateInfo")
+        fun getCount(): Int {
+            println(repo.findAll().count());
+            return repo.findAll().count()
+        }*/
     @PostMapping("/CreateInfo")
     fun createAccount(data: Account): ResponseEntity<String> {
         val name = data.name
@@ -60,5 +63,27 @@ class CreateInfoController(@Autowired val repo: Repo) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"message\": \"Failed to create account\"}")
         }
     }
+
+    @PostMapping("/loginPage")
+    fun login(data: Account,HttpSession: HttpServletRequest): ResponseEntity<String>  {
+        val id = data.id
+        val password = data.password
+
+        val isLoggedIn = true
+
+        if (id.isNullOrEmpty() || password.isNullOrEmpty()) {
+            return ResponseEntity.badRequest().body("{\"message\": \"잘못된 로그인 정보입니다\"}")
+        }
+
+        val account = repo.findById(id).orElse(null)
+
+        if (account != null && account.password == password) {
+            session.setAttribute("userId", id);
+            return ResponseEntity.ok("{\"message\": \"로그인 성공\"}")
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"message\": \"유효하지 않은 아이디 또는 비밀번호입니다\"}")
+        }
+    }
+
 }
 

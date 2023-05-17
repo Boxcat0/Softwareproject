@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface Repo : MongoRepository<Account, String> {
 
-    fun findByid(id: String): Account?
+    /*fun findByid(id: String): Account?*/
 }
