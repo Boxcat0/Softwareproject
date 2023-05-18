@@ -4,16 +4,22 @@ import "../css/map.css"
 import "../css/youtube_button.css"
 import {Link} from "react-router-dom";
 import Review from "./ReviewPage";
+import Mini from "./MiniMap";
 
 
 function useSeparatePage(){
+
     const [gymData, setgymData] = useState(null);
     useEffect(()=>{
         axios.get('/SeparatePage').then(res=>setgymData(res.data))
     },[]);
     const [popup, setPopup] = useState(false);
+    const [popup2, setPopup2] = useState(false);
     const handleComplete = (data) => {
         setPopup(!popup);
+    }
+    const handleComplete2 = (data) => {
+        setPopup2(!popup2);
     }
     const handleSession =() =>{
         sessionStorage.removeItem("targetName");
@@ -25,6 +31,11 @@ function useSeparatePage(){
                    <Link to="/Map">
                        <button className="bannerButton" onClick={handleSession}>뒤로가기</button>
                    </Link>
+                   <div>
+                       <button className="bannerButton" onClick={handleComplete2}>지도 확인</button>
+                       {popup2&&<Mini></Mini>}
+                       
+                   </div>
                    <h1><span>{sessionStorage.getItem("targetName")}</span></h1>
                </div>
                <div>
@@ -38,7 +49,7 @@ function useSeparatePage(){
                </div>
                <div>
                    <button className="bannerButton" onClick={handleComplete}>리뷰 확인하기</button>
-                   {popup&&<Review></Review>}
+                   {popup&& <Review></Review>}
                </div>
            </div>
        </div>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Navbar from './components/ForMainPage/Navbar';
 import Title from './components/ForMainPage/Title';
@@ -45,7 +45,7 @@ function App() {
              <Route exact path="/CreateInfo_G" element={<CreateInfoGym/>}/>
              <Route exact path="/CreateInfo_t" element={<CreateInfoTrainer/>}/>
              <Route exact path="/SeparatePage" element={<SeparatePage />}/>
-             <Route exact path="/login" element={<LoginPage />} />
+             <Route exact path="/LoginPage" element={<LoginPage />} />
              <Route exact path="/Map" element={<Map />} />
              <Route exact path="/CreateInfo" element={<CreateInfo />}/>
            </Routes>

@@ -4,6 +4,13 @@
     justify-content: center;
     align-items: center;
 }
+.kakaoMap2{
+    height: 30vh;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
 
 .seo{
     display : flex;

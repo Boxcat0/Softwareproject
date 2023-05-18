@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "../css/map.css";
 import gym_data from "../JsonFile/gym_data.json";
 import gym_data_seoul from "../JsonFile/gymdata.json";
-import SeparatePage from "./SeparatePage";
 
 function Map() {
     let latitude = parseFloat(sessionStorage.getItem("latitude"));
@@ -47,6 +46,8 @@ function Map() {
             window.kakao.maps.event.addListener(marker, 'click', function(){
                 sessionStorage.setItem('targetNumber',positions.number);
                 sessionStorage.setItem('targetName', positions.title);
+                sessionStorage.setItem('targetLng',positions.Lng);
+                sessionStorage.setItem('targetLat',positions.Lat);
                 window.location.assign("/SeparatePage");
             });
             return null;
@@ -75,6 +76,8 @@ function Map() {
             window.kakao.maps.event.addListener(marker, 'click', function(){
                 sessionStorage.setItem('targetNumber',positions.number);
                 sessionStorage.setItem('targetName', positions.title);
+                sessionStorage.setItem('targetLng',positions.Lng);
+                sessionStorage.setItem('targetLat',positions.Lat);
                 window.location.assign("/SeparatePage");
             });
             return null;

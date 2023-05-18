@@ -49,7 +49,7 @@ function MenuButton() {
                 </div>
             ) : (
                 <div className="loginName">
-                    <Link to="/login">
+                    <Link to="/LoginPage">
                         <button className="location_my">로그인</button>
                     </Link>
                 </div>
