@@ -1,4 +1,5 @@
-package com.example.backend
+package com.example.backend.repository
+import com.example.backend.models.Account
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories
 import org.springframework.stereotype.Repository

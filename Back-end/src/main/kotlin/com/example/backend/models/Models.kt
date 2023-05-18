@@ -1,4 +1,4 @@
-package com.example.backend
+package com.example.backend.models
 
 import org.springframework.data.mongodb.core.mapping.Document
 import java.util.*
@@ -7,7 +7,7 @@ import java.util.*
 data class Account(
     val name: String = "",
     val id: String = "",
-    val password: String = "",
+    var password: String = "",
     val place: String = "",
 )
 
