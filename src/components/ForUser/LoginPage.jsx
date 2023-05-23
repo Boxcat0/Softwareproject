@@ -22,6 +22,7 @@ function LoginPage() {
        }))
            .then((response) => {
                console.log("success");
+               document.location.href ="/";
 
            })
            .catch((error)=>{
