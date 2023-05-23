@@ -22,6 +22,7 @@ function LoginPage() {
        }))
            .then((response) => {
                console.log("success");
+               sessionStorage.setItem("isLoggedIn","true");
                document.location.href ="/";
 
            })
