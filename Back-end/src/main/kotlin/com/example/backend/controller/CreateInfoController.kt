@@ -1,6 +1,6 @@
 package com.example.backend.controller
 
-import com.example.backend.models.Account
+import com.example.backend.models.Member
 import com.example.backend.repository.Repo
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpSession
@@ -16,7 +16,7 @@ class CreateInfoController(@Autowired val repo: Repo,
                            private val session: HttpSession,
                            private val passwordEncoder: PasswordEncoder) {
     @PostMapping("/CreateInfo")
-    fun createAccount(data: Account): ResponseEntity<String> {
+    fun createAccount(data: Member): ResponseEntity<String> {
         val name = data.name
         val id = data.id
         val password = data.password
@@ -38,7 +38,7 @@ class CreateInfoController(@Autowired val repo: Repo,
     }
 
     @PostMapping("/loginPage")
-    fun login(data: Account, HttpSession: HttpServletRequest): ResponseEntity<String>  {
+    fun login(data: Member, HttpSession: HttpServletRequest): ResponseEntity<String>  {
         val id = data.id
         val password = data.password
 
