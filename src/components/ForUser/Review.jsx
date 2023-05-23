@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../css/map.css";
 import "../css/youtube_button.css";
 import "../css/star.css";
+import axios from "axios";
+import qs from "qs";
 
 function useReview() {
     const userName = sessionStorage.getItem('Id');
@@ -42,6 +44,17 @@ function useReview() {
 
         alert(`별점: ${rate}\n내용: ${review}`);
         reviewTextArea.value = '';
+        axios.post('/Review', qs.stringify({
+            id: userName,
+            gym : gymName,
+            star : rate,
+            reviews : review
+        })).then((response) => {
+            console.log(response.data);
+        })
+            .catch((error) => {
+            console.error(error);
+        });
     };
 
     const showMessage = (type) => {
