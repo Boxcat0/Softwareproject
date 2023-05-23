@@ -22,6 +22,7 @@ function CreateInfo() {
 
             .then((response) => {
                 console.log(response.data);
+                document.location.href="/";
             })
             .catch((error) => {
                 console.error(error);
