@@ -8,7 +8,7 @@ data class Member(
     val name: String = "",
     val id: String = "",
     var password: String = "",
-    val place: String = "",
+    val address: String = "",
 )
 @Document("Gym")
 data class Gym(

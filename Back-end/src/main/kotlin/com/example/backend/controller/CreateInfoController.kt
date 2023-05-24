@@ -6,7 +6,6 @@ import com.example.backend.models.Trainer
 import com.example.backend.repository.GymRepo
 import com.example.backend.repository.MemberRepo
 import com.example.backend.repository.TrainerRepo
-import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpSession
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -26,7 +25,7 @@ class CreateInfoController(@Autowired val memberRepo: MemberRepo,
         val name = data.name
         val id = data.id
         val password = data.password
-        val place = data.place
+        val place = data.address
 
         // data 객체의 validation 수행
         if (name.isNullOrEmpty() || id.isNullOrEmpty() || password.isNullOrEmpty() || place.isNullOrEmpty()) {
@@ -75,16 +74,12 @@ class CreateInfoController(@Autowired val memberRepo: MemberRepo,
         val password = data.password
         val gymname = data.gymname
         val gymplace = data.gymplace
-        val role = true
 
-        if (role) { // data 객체의 validation 수행
+      // data 객체의 validation 수행
             if (name.isNullOrEmpty() || id.isNullOrEmpty() || password.isNullOrEmpty() || gymname.isNullOrEmpty() || gymplace.isNullOrEmpty()) {
                 return ResponseEntity.badRequest().body("{\"message\": \"Invalid request data\"}")
             }
-        } else {
-            if (name.isNullOrEmpty() || id.isNullOrEmpty() || password.isNullOrEmpty())
-                return ResponseEntity.badRequest().body("{\"message\": \"Invalid request data\"}")
-            }
+
 
 
             try {
@@ -102,7 +97,7 @@ class CreateInfoController(@Autowired val memberRepo: MemberRepo,
 
 
         @PostMapping("/loginPage")
-        fun login(data: Member, HttpSession: HttpServletRequest): ResponseEntity<String> {
+        fun login(data: Member): ResponseEntity<String> {
             val id = data.id
             val password = data.password
 
