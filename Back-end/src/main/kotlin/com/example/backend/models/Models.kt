@@ -10,5 +10,20 @@ data class Member(
     var password: String = "",
     val place: String = "",
 )
-
+@Document("Gym")
+data class Gym(
+    val name: String = "",
+    val id: String = "",
+    var password: String = "",
+    val gymname: String = "",
+    val place: String = "",
+)
+@Document("Trainer")
+data class Trainer(
+    val name: String = "",
+    val id: String = "",
+    var password: String = "",
+    val gymname: String = "",
+    val gymplace: String = "",
+)
 
