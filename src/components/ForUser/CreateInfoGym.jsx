@@ -9,7 +9,7 @@ function CreateInfoGym(){
     const [name, setName] = useState('');
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
-    const [place, setPlace] = useState('');
+    const [address, setAddress]  = useState('');
     const [Gym_name, setGym_name] = useState('');
     const [enroll_company, setEnroll_company] = useState({
         address:'',
@@ -22,7 +22,7 @@ function CreateInfoGym(){
             ...enroll_company,
             [e.target.name]:e.target.value,
         })
-        setPlace(e.target.value);
+        setAddress(e.target.value);
     }
 
     const handleComplete = (data) => {
@@ -30,12 +30,12 @@ function CreateInfoGym(){
     }
     const handleSubmitGym = (e) => {
         e.preventDefault();
-        axios.post('/CreateInfoGym', qs.stringify({
+        axios.post('/CreateInfo_G', qs.stringify({
             name: name,
             id: id,
             password: password,
             Gym_name : Gym_name,
-            place: place,
+            address: address,
             role: 'GYM',
         }))
 

@@ -13,7 +13,7 @@ function CreateInfo_t(){
     const [name, setName] = useState('');
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
-    const [place, setPlace] = useState('');
+    const [address, setAddress]  = useState('');
     const [Gym_name, setGym_name] = useState('');
     const [enroll_company, setEnroll_company] = useState({
         address:'',
@@ -26,7 +26,7 @@ function CreateInfo_t(){
             ...enroll_company,
             [e.target.name]:e.target.value,
         })
-        setPlace(e.target.value);
+        setAddress(e.target.value);
     }
 
     const handleComplete = (data) => {
@@ -34,12 +34,12 @@ function CreateInfo_t(){
     }
     const handleSubmitTrainer_Gym = (e) => {
         e.preventDefault();
-        axios.post('/CreateInfoTrainer_g', qs.stringify({
+        axios.post('/CreateInfo_T', qs.stringify({
             name: name,
             id: id,
             password: password,
             Gym_name : Gym_name,
-            place: place,
+            address: address,
             role: 'GYM_t',
         }))
 
@@ -53,11 +53,11 @@ function CreateInfo_t(){
     };
     const handleSubmitTrainer = (e) => {
         e.preventDefault();
-        axios.post('/CreateInfoTrainer_p', qs.stringify({
+        axios.post('/CreateInfo_T', qs.stringify({
             name: name,
             id: id,
             password: password,
-            place: place,
+            address: address,
             role: 'Personal_t',
         }))
 
@@ -72,7 +72,7 @@ function CreateInfo_t(){
     function pw_check(e){
         if(password.length <5){
             alert("비밀번호는 5자리 이상 입력해주세요");
-            history("/CreateInfo_t");
+            history("/CreateInfo_T");
             return false;
         }else
         {
@@ -81,7 +81,7 @@ function CreateInfo_t(){
                 if(document.getElementById("Gym_name").value === null)
                 {
                     alert("상호명을 입력해주세요. 개인 트레이너라면 개인 트레이너 회원가입으로 진행해주세요.");
-                    history("/CreateInfo_t");
+                    history("/CreateInfo_T");
                     return false;
                 }
                 handleSubmitTrainer_Gym(e);

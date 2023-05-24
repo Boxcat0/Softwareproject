@@ -26,7 +26,7 @@ const Post = (props) => {
     return (
         <div className="parent-container">
             <DaumPostcode
-                className="modal_review"
+                className="postmodal"
                 autoClose
                 onComplete={complete} />
         </div>

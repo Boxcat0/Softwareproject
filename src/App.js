@@ -43,7 +43,7 @@ function App() {
              <Route exact path="/PostFind" element={<FindPage />}/>
              <Route exact path="/chooseCreate" element={<MiddleSelect/>}/>
              <Route exact path="/CreateInfo_G" element={<CreateInfoGym/>}/>
-             <Route exact path="/CreateInfo_t" element={<CreateInfoTrainer/>}/>
+             <Route exact path="/CreateInfo_T" element={<CreateInfoTrainer/>}/>
              <Route exact path="/SeparatePage" element={<SeparatePage />}/>
              <Route exact path="/LoginPage" element={<LoginPage />} />
              <Route exact path="/Map" element={<Map />} />

@@ -16,7 +16,7 @@ function useLoading_CreateInfo(){
                 </Link>
             </div>
             <div className = "Loading_main">
-                <Link to="/CreateInfo_t">
+                <Link to="/CreateInfo_T">
                     <button className ="Loading">트레이너 회원가입</button>
                 </Link>
             </div>
