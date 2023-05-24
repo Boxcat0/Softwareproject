@@ -9,7 +9,7 @@ const images = [
     },
     {
         url: '시판2.png',//중고거래
-        link: 'www.google.com',
+        link: '/CarrotMarket',
     }
 ];
 

@@ -4,6 +4,7 @@ import "../css/Loadingdesign.css"
 import {useNavigate } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
+import Post from "../ForMapPage/PostFind";
 
 function CreateInfo_t(){
     const [showInputs, setShowInputs] = useState(false);
@@ -14,9 +15,26 @@ function CreateInfo_t(){
     const [password, setPassword] = useState('');
     const [place, setPlace] = useState('');
     const [Gym_name, setGym_name] = useState('');
+    const [enroll_company, setEnroll_company] = useState({
+        address:'',
+    });
+
+    const [popup, setPopup] = useState(false);
+
+    const handleInput = (e) => {
+        setEnroll_company({
+            ...enroll_company,
+            [e.target.name]:e.target.value,
+        })
+        setPlace(e.target.value);
+    }
+
+    const handleComplete = (data) => {
+        setPopup(!popup);
+    }
     const handleSubmitTrainer_Gym = (e) => {
         e.preventDefault();
-        axios.post('/CreateInfoTrainer', qs.stringify({
+        axios.post('/CreateInfoTrainer_g', qs.stringify({
             name: name,
             id: id,
             password: password,
@@ -35,7 +53,7 @@ function CreateInfo_t(){
     };
     const handleSubmitTrainer = (e) => {
         e.preventDefault();
-        axios.post('/CreateInfoTrainer', qs.stringify({
+        axios.post('/CreateInfoTrainer_p', qs.stringify({
             name: name,
             id: id,
             password: password,
@@ -45,21 +63,27 @@ function CreateInfo_t(){
 
             .then((response) => {
                 console.log(response.data);
-                document.location.href="/";
+                document.location.href="/loginPage";
             })
             .catch((error) => {
                 console.error(error);
             });
     };
     function pw_check(e){
-        if(document.getElementById("password").value.length <5){
+        if(password.length <5){
             alert("비밀번호는 5자리 이상 입력해주세요");
-            history("/CreateInfo_Gym");
+            history("/CreateInfo_t");
             return false;
         }else
         {
             if(showInputs === true)
             {
+                if(document.getElementById("Gym_name").value === null)
+                {
+                    alert("상호명을 입력해주세요. 개인 트레이너라면 개인 트레이너 회원가입으로 진행해주세요.");
+                    history("/CreateInfo_t");
+                    return false;
+                }
                 handleSubmitTrainer_Gym(e);
             }
             else if(showInputs2 === true)
@@ -83,13 +107,17 @@ function CreateInfo_t(){
                 <button className="T_button" onClick={NonEnter}>개인 트레이너</button>
             </div>
             {showInputs &&(
-                <div className="CreateForm2">
-                    <form className ="CreateForm_t" method="post" action ="/CreateInfo" onSubmit={pw_check}>
+                <div className="CreateForm3">
+                    <form className ="CreateForm_t" method="post" onSubmit={pw_check}>
                         <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="이름" />
                         <input type="text" name="id" value={id} onChange={(e) => setId(e.target.value)} placeholder="아이디를 입력해주세요" />
                         <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="5자리 이상의 비밀번호를 입력해주세요" />
                         <input type="text" id = "Gym_name" name = "Gym_name" value={Gym_name} onChange={(e) => setGym_name(e.target.value)} placeholder="상호명"/>
-                        <input type="text" name="place" value={place} onChange={(e) => setPlace(e.target.value)} placeholder="주소를 입력해주세요" />
+                        <input type="text" name="place" placeholder="주소 검색 버튼을 눌러주세요"  required={true} onChange={handleInput} value={enroll_company.address} />
+                        <div>
+                            <button className = "FormButton" onClick={handleComplete}>주소찾기</button>
+                            {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
+                        </div>
                         <input type="hidden" name = "role" value = "GYM_t"/>
                         <input type = "submit" value = "Register"/>
                     </form>
@@ -97,10 +125,15 @@ function CreateInfo_t(){
             )}
             {showInputs2 &&(
                 <div className="CreateForm2">
-                    <form className ="CreateForm" method="post" action ="/CreateInfo" onSubmit={pw_check}>
+                    <form className ="CreateForm" method="post" onSubmit={pw_check}>
                         <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="이름" />
                         <input type="text" name="id" value={id} onChange={(e) => setId(e.target.value)} placeholder="아이디를 입력해주세요" />
                         <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="5자리 이상의 비밀번호를 입력해주세요" />
+                        <input type="text" name="place" placeholder="주소 검색 버튼을 눌러주세요"  required={true} onChange={handleInput} value={enroll_company.address} />
+                        <div>
+                            <button className = "FormButton" onClick={handleComplete}>주소찾기</button>
+                            {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
+                        </div>
                         <input type="hidden" name = "role" value = "Personal_t"/>
                         <input type = "submit" value = "Register"/>
                     </form>

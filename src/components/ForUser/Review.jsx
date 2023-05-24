@@ -51,6 +51,7 @@ function useReview() {
             reviews : review
         })).then((response) => {
             console.log(response.data);
+            window.location.assign('/SeparatePage');
         })
             .catch((error) => {
             console.error(error);

@@ -1,9 +1,14 @@
 import React, {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/locationbutton.css";
+import Select from "../ForCommunity/SelectCommunityPage";
 
 function MenuButton() {
     const history = useNavigate();
+    const [popup, setPopup] = useState(false);
+    const handleComplete = (data) => {
+        setPopup(!popup);
+    }
     const [isLoggedIn, setIsLoggedIn] = useState(
         sessionStorage.getItem("isLoggedIn")==="true"
     );
@@ -40,6 +45,10 @@ function MenuButton() {
                         <Link to ="/map">
                             <button className="location_my" onClick={mapSetting}>내 위치</button>
                         </Link>
+                    </div>
+                    <div className="location">
+                        <button className="location_my" onClick={handleComplete}>커뮤니티 이동</button>
+                        {popup &&<Select></Select>}
                     </div>
                     <div className="location">
                         <Link to ="/PostFind">
