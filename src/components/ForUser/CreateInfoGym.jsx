@@ -22,7 +22,7 @@ function CreateInfoGym(){
             ...enroll_company,
             [e.target.name]:e.target.value,
         })
-        setAddress(e.target.value);
+        setAddress(enroll_company.address);
     }
 
     const handleComplete = (data) => {
@@ -41,7 +41,7 @@ function CreateInfoGym(){
 
             .then((response) => {
                 console.log(response.data);
-                document.location.href="/loginPage";
+                document.location.href="/LoginPage";
             })
             .catch((error) => {
                 console.error(error);
@@ -65,7 +65,7 @@ function CreateInfoGym(){
                 <input type="text" name="id" value={id} onChange={(e) => setId(e.target.value)} placeholder="아이디를 입력해주세요" />
                 <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="5자리 이상의 비밀번호를 입력해주세요" />
                 <input type="text" name = "Gym_name" value={Gym_name} onChange={(e) => setGym_name(e.target.value)} placeholder="상호명"/>
-                <input type="text" name="place" placeholder="주소 검색 버튼을 눌러주세요"  required={true} onChange={handleInput} value={enroll_company.address} />
+                <input type="text" name="address" placeholder="주소 검색 버튼을 눌러주세요"  required={true} onChange={handleInput} value={enroll_company.address} />
                 <div>
                     <button className = "FormButton" onClick={handleComplete}>주소찾기</button>
                     {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}

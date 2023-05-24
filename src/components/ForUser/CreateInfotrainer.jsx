@@ -26,7 +26,7 @@ function CreateInfo_t(){
             ...enroll_company,
             [e.target.name]:e.target.value,
         })
-        setAddress(e.target.value);
+        setAddress(enroll_company.address);
     }
 
     const handleComplete = (data) => {
@@ -63,7 +63,7 @@ function CreateInfo_t(){
 
             .then((response) => {
                 console.log(response.data);
-                document.location.href="/loginPage";
+                document.location.href="/LoginPage";
             })
             .catch((error) => {
                 console.error(error);

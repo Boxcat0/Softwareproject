@@ -72,7 +72,7 @@ function useReview() {
                 <div>
                     <button className="modalBackbutton" onClick={handleModal}></button>
                 </div>
-                <form method="post" action="/Review" onSubmit={handleSubmit}>
+                <form method="post" onSubmit={handleSubmit}>
                     <input type="hidden" name="id" value={userName} />
                     <input type="hidden" name="gym" value={gymName} />
                     <input type="hidden" name="rate" id="rate" value="0" />
