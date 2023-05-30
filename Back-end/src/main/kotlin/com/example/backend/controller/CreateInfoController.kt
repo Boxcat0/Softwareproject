@@ -115,4 +115,11 @@ class CreateInfoController(@Autowired val memberRepo: MemberRepo,
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"message\": \"유효하지 않은 아이디 또는 비밀번호입니다\"}")
             }
         }
+
+    @PostMapping("/logout")
+    fun logout(session: HttpSession): ResponseEntity<String?>? {
+        // 세션 삭제
+        session.invalidate()
+        return ResponseEntity.ok("Logout success.")
     }
+}
