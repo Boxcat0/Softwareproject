@@ -12,7 +12,7 @@ import qs from "qs";
 function useSeparatePage(){
 
     const [gymData, setgymData] = useState(null);
-    const [gymname,setGymName] = useState("");
+    const [gymname,setGymName] = useState('');
     useEffect(()=>{
         axios.get('/SeparatePage').then(res=>setgymData(res.data))
     },[]);
@@ -20,9 +20,8 @@ function useSeparatePage(){
     const [popup2, setPopup2] = useState(false);
     const [popup3, setPopup3] = useState(false);
     const com =()=>{
-        setGymName(sessionStorage.getItem("targetName"));
         axios.post('/map_click', qs.stringify({
-            GymName : gymname
+            gymname
         }))
             .then((response) => {
                 console.log(response.data);
@@ -32,6 +31,8 @@ function useSeparatePage(){
             });
     }
     const handleComplete = () => {
+        let target =sessionStorage.getItem("targetName");
+        setGymName(target);
         com();
         setPopup(!popup);
     }
