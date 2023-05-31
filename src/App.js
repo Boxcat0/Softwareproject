@@ -17,7 +17,7 @@ import CreateInfoTrainer from "./components/ForUser/CreateInfotrainer";
 import MiddleSelect from "./components/ForUser/MiddleSelect_CreateInfo";
 import FindPage from "./components/ForMapPage/FindPage";
 import SeparatePage from "./components/ForMapPage/SeparatePage";
-
+import MiddlePage from "./components/ForMapPage/MiddlePage";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -47,6 +47,7 @@ function App() {
              <Route exact path="/SeparatePage" element={<SeparatePage />}/>
              <Route exact path="/LoginPage" element={<LoginPage />} />
              <Route exact path="/Map" element={<Map />} />
+             <Route exact path="/MiddlePage" element={<MiddlePage />}/>
              <Route exact path="/CreateInfo" element={<CreateInfo />}/>
            </Routes>
          </div>
