@@ -37,12 +37,12 @@ function MenuButton() {
                         </button>
                     </div>
                     <div className ="my_info">
-                        <Link to="/myInfo">
+                        <Link to="/MyInfo">
                             <button className ="location_my">내 정보</button>
                         </Link>
                     </div>
                     <div className="location">
-                        <Link to ="/map">
+                        <Link to ="/Map">
                             <button className="location_my" onClick={mapSetting}>내 위치</button>
                         </Link>
                     </div>
