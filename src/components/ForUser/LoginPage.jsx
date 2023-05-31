@@ -5,7 +5,7 @@ import "./CreateInfo";
 import axios from "axios";
 import qs from "qs";
 
-function LoginPage() {
+function LoginPage(key, value) {
     const [username, setId] = useState('');
     const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem("isLoggedIn") === "true");
@@ -23,6 +23,7 @@ function LoginPage() {
            .then((response) => {
                console.log("success");
                sessionStorage.setItem("isLoggedIn","true");
+               sessionStorage.setItem("ID",username);
                document.location.href ="/";
 
            })

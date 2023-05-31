@@ -6,6 +6,8 @@ import Banner from "./ForMainPage/banner"
 
 
 function useMain(){
+    let name = sessionStorage.getItem("ID");
+    console.log(name);
     return(
         <div>
 

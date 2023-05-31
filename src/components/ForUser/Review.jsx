@@ -6,7 +6,7 @@ import axios from "axios";
 import qs from "qs";
 
 function useReview() {
-    const userName = sessionStorage.getItem('Id');
+    const userName = sessionStorage.getItem('ID');
     const gymName = sessionStorage.getItem('targetName');
     const [rate, setRate] = useState(0);
 

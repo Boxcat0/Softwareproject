@@ -69,6 +69,7 @@ function Reservation(){
                 <form method="post" onSubmit={checkRev}>
                     <input type="text" name = "name" value ={name} placeholder="예약자 성함을 입력해주세요" onChange={(e) => setName(e.target.value)}/>
                     <input type="text" name="address" placeholder="주소 검색 버튼을 눌러주세요" required={true}  value={enroll_company.address} onChange={handleInput} />
+                    <input type="hidden" name ="gym_name" value={sessionStorage.getItem("targetName")}/>
                     <div>
                         <button className = "FormButton" onClick={handleComplete}>주소찾기</button>
                         {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
