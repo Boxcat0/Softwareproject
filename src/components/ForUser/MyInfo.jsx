@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import "../css/user.css"
 
 function MyInfo() {
     const [userData, setUserData] = useState();
@@ -25,21 +26,21 @@ function MyInfo() {
         <div className="1st">
             {userData ?
                 (
-                <div>
+                <div className ="userInfo">
                     <div>
-                        <label>이름: </label>
+                        <label className = "userLabel">이름: </label>
                         <span>{userDataName}</span>
                     </div>
                     <div>
-                        <label>ID: </label>
+                        <label className = "userLabel">ID: </label>
                         <span>{userDataId}</span>
                     </div>
                     <div>
-                        <label>PW: </label>
+                        <label className = "userLabel">PW: </label>
                         <button>수정하기</button>
                     </div>
                     <div>
-                        <label>주소: </label>
+                        <label className = "userLabel">주소: </label>
                         <span>{userDataAd}</span>
                     </div>
                 </div>

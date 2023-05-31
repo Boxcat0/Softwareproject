@@ -1,0 +1,12 @@
+.userInfo{
+    z-index: 0;
+    justify-content: center;
+    margin-left: 250px;
+    margin-bottom: -20px;
+}
+
+.userLabel{
+    border: 1px solid black;
+    background-color: var(--clr-white);
+    color : black;
+}

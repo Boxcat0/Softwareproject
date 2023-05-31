@@ -7,7 +7,6 @@ import qs from "qs";
 
 function useReview() {
     const userName = sessionStorage.getItem('ID');
-    console.log(userName);
     const gymName = sessionStorage.getItem('targetName');
     const [rate, setRate] = useState(0);
 

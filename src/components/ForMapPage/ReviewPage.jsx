@@ -14,28 +14,24 @@ const ReviewPage = () =>{
     const handleComplete = (data) => {
         setPopup(!popup);
     }
-    const [lastIdx, setLastIdx] = useState(0);
+    //const [lastIdx, setLastIdx] = useState(0);
     const [Data, setData] = useState([{
         id :'',
         rate : '',
         review : ''
     }])
-    useEffect(async()=>{
-        try{
-            const res = await axios.get('/ReviewPage')
-            const inputData = await res.data.map((rowData) => (
-                setLastIdx(lastIdx +1),
-                    {
-                        id : rowData.id,
-                        rate : rowData.rate,
-                        review : rowData.review
-                    })
-            )
-            setData(Data.concat(inputData))
-        } catch(e){
-            console.error(e.message);
-        }
-    },[])
+    useEffect(()=> {
+        const url = "/ReviewPage";
+        axios
+            .get(url)
+            .then((res)=>{
+                setData(res.data);
+                console.log("성공");
+            })
+            .catch((Error) =>{
+                console.log(Error);
+            })
+    })
     return(
         <div className="modal">
             <div className= "modal-container">
@@ -50,7 +46,7 @@ const ReviewPage = () =>{
                     <input type="text" name="reviews"/>
                     <input type="submit" value="검색"/>
                 </form>
-                {lastIdx !==0 ?
+                {Data ?
                     Data.map(rowData =>(
                         rowData.id !== ''&&
                             <tr>
