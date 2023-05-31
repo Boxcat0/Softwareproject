@@ -100,8 +100,6 @@ class CreateInfoController(@Autowired val memberRepo: MemberRepo,
         fun login(data: Member): ResponseEntity<String> {
             val id = data.id
             val password = data.password
-
-
             if (id.isNullOrEmpty() || password.isNullOrEmpty()) {
                 return ResponseEntity.badRequest().body("{\"message\": \"잘못된 로그인 정보입니다\"}")
             }
@@ -109,7 +107,6 @@ class CreateInfoController(@Autowired val memberRepo: MemberRepo,
             val account = memberRepo.findById(id).orElse(null)
 
             if (account != null && passwordEncoder.matches(password, account.password)) {
-                session.setAttribute("userId", id);
                 return ResponseEntity.ok("{\"message\": \"로그인 성공\"}")
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"message\": \"유효하지 않은 아이디 또는 비밀번호입니다\"}")

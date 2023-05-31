@@ -36,3 +36,7 @@ data class Review(
     val reviews: String = "",
     val date: LocalDate = LocalDate.now(),
 )
+@Document("EventGym")
+data class EventGym(
+    val gymname: String =  "",
+)

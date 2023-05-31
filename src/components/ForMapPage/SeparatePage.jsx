@@ -65,7 +65,7 @@ function useSeparatePage(){
                    <button className= "DefaultButton">문의하기</button>
                </div>
                <div>
-                   <textarea className="textArea" rows="10" cols="50" value={gymData.value || '현재 등록된 설명이 없습니다.'} readOnly />
+                   <textarea className="textArea" rows="10" cols="50" value={gymData || '현재 등록된 설명이 없습니다.'} readOnly />
                </div>
                <div>
                    <button className="DefaultButton" onClick={handleComplete}>리뷰 확인하기</button>

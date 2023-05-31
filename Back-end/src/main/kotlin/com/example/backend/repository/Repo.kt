@@ -1,4 +1,5 @@
 package com.example.backend.repository
+import com.example.backend.models.EventGym
 import com.example.backend.models.Gym
 import com.example.backend.models.Member
 import com.example.backend.models.Trainer
@@ -19,4 +20,4 @@ interface TrainerRepo : MongoRepository<Trainer, String>
 {
 
 }
-
+interface EventGymRepo : MongoRepository<EventGym, String>
