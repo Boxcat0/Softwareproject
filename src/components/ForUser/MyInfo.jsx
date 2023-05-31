@@ -1,38 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 function MyInfo() {
     const [userData, setUserData] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await axios.get('/MyInfo');
-                const userInfo = res.data.map((rowData) => ({
-                    name: rowData.name,
-                    id: rowData.id,
-                    address: rowData.address,
-                }));
-                setUserData([...userData, ...userInfo]);
-            } catch (e) {
-                console.error(e.message);
-            }
-        };
-
-        fetchData();
-    }, []);
-
+    useEffect(()=>{
+        const getData = async()=>{
+            const url ="/MyInfo";
+            axios
+                .get(url)
+                .then((res)=>{
+                    setUserData(res.data);
+                    console.log("성공");
+                })
+                .catch((Error) =>{
+                    console.log(Error);
+                })
+        }
+    })
     return (
         <div className="1st">
-            {userData ? (
+            {userData ?
+                userData.map((user)=>(
                 <div>
                     <div>
                         <label>이름: </label>
-                        <span>{userData[0].name}</span>
+                        <span>{user[0].name}</span>
                     </div>
                     <div>
                         <label>ID: </label>
-                        <span>{userData[0].id}</span>
+                        <span>{user[0].id}</span>
                     </div>
                     <div>
                         <label>PW: </label>
@@ -40,14 +36,15 @@ function MyInfo() {
                     </div>
                     <div>
                         <label>주소: </label>
-                        <span>{userData[0].address}</span>
+                        <span>{user[0].address}</span>
                     </div>
                 </div>
-            ) : (
+            )) : (
                 <div>
                     <h1>저장된 데이터가 없는 오류가 발생했습니다.</h1>
                 </div>
-            )}
+            )
+            }
         </div>
     );
 }

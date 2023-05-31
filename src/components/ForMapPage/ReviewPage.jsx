@@ -5,6 +5,7 @@ import Review from "../ForUser/Review"
 import axios from "axios";
 
 const ReviewPage = () =>{
+    let trigger = sessionStorage.getItem("isLoggedIn");
     const handleModal =() =>{
         console.log("false");
         window.location.assign("/SeparatePage");
@@ -63,10 +64,16 @@ const ReviewPage = () =>{
                     </tr>
 
                 }
-                <div>
-                    <button className="DefaultButton" onClick={handleComplete}>리뷰 작성하기</button>
-                    {popup&& <Review></Review>}
-                </div>
+                {trigger?(
+                    <div>
+                        <button className="DefaultButton" onClick={handleComplete}>리뷰 작성하기</button>
+                        {popup&& <Review></Review>}
+                    </div>
+                ):(
+                    <div>
+                    </div>
+                )
+                }
             </div>
         </div>
     );

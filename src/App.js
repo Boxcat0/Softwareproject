@@ -38,10 +38,10 @@ function App() {
            </div>
            <Routes>
              <Route exact path="/" element={<Loading />} />
-             <Route exact path="/myInfo" element ={<MyInfo />}/>
-             <Route exact path="/mainPage" element={<Main />}/>
+             <Route exact path="/MyInfo" element ={<MyInfo />}/>
+             <Route exact path="/MainPage" element={<Main />}/>
              <Route exact path="/PostFind" element={<FindPage />}/>
-             <Route exact path="/chooseCreate" element={<MiddleSelect/>}/>
+             <Route exact path="/ChooseCreate" element={<MiddleSelect/>}/>
              <Route exact path="/CreateInfo_G" element={<CreateInfoGym/>}/>
              <Route exact path="/CreateInfo_T" element={<CreateInfoTrainer/>}/>
              <Route exact path="/SeparatePage" element={<SeparatePage />}/>

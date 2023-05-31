@@ -16,7 +16,7 @@ function useLoading(){
                     </Link>
                 </div>
                 <div className = "Loading_main">
-                    <Link to="/mainPage">
+                    <Link to="/MainPage">
                         <button className ="Loading">근육 커GYM 메인 페이지로 이동</button>
                     </Link>
                 </div>

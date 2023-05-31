@@ -7,6 +7,7 @@ import qs from "qs";
 
 function useReview() {
     const userName = sessionStorage.getItem('ID');
+    console.log(userName);
     const gymName = sessionStorage.getItem('targetName');
     const [rate, setRate] = useState(0);
 
@@ -42,7 +43,7 @@ function useReview() {
             return;
         }
 
-        alert(`별점: ${rate}\n내용: ${review}`);
+        alert(`별점: ${rate}\n내용: ${review}\n아이디: ${userName}`);
         reviewTextArea.value = '';
         axios.post('/Review', qs.stringify({
             id: userName,

@@ -52,7 +52,7 @@ function LoginPage(key, value) {
                         </label>
                     </div>
                     <button className="DefaultButton" type="submit">로그인</button>
-                    <Link to="/chooseCreate">
+                    <Link to="/ChooseCreate">
                         <button className="DefaultButton">회원가입</button>
                     </Link>
                 </form>
