@@ -1,16 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Any} from "react-spring";
 
 function MyInfo() {
     const [userData, setUserData] = useState();
+    const [userDataName, setUserDataName] = useState();
+    const [userDataId, setUserDataId] = useState();
+    const [userDataAd, setUserDataAd] = useState();
     useEffect(()=>{
         const url ="/MyInfo";
         axios
             .get(url)
             .then((res)=>{
-                setUserData(res.data.result);
-                console.log(userData);
+                setUserData(res.data);
+                setUserDataName(res.data.name);
+                setUserDataId(res.data.id);
+                setUserDataAd(res.data.address);
+                console.log("성공");
             })
             .catch((Error) =>{
                 console.log(Error);
@@ -23,11 +28,11 @@ function MyInfo() {
                 <div>
                     <div>
                         <label>이름: </label>
-                        <span>{userData[0].name}</span>
+                        <span>{userDataName}</span>
                     </div>
                     <div>
                         <label>ID: </label>
-                        <span>{userData[0].id}</span>
+                        <span>{userDataId}</span>
                     </div>
                     <div>
                         <label>PW: </label>
@@ -35,7 +40,7 @@ function MyInfo() {
                     </div>
                     <div>
                         <label>주소: </label>
-                        <span>{userData[0].address}</span>
+                        <span>{userDataAd}</span>
                     </div>
                 </div>
             ) : (
