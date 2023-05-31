@@ -4,18 +4,16 @@ import axios from 'axios';
 function MyInfo() {
     const [userData, setUserData] = useState(null);
     useEffect(()=>{
-        const getData = async()=>{
-            const url ="/MyInfo";
-            axios
-                .get(url)
-                .then((res)=>{
-                    setUserData(res.data);
-                    console.log("성공");
-                })
-                .catch((Error) =>{
-                    console.log(Error);
-                })
-        }
+        const url ="http://localhost:8080/MyInfo";
+        axios
+            .get(url)
+            .then((res)=>{
+                setUserData(res.data);
+                console.log("성공");
+            })
+            .catch((Error) =>{
+                console.log(Error);
+            })
     })
     return (
         <div className="1st">
