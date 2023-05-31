@@ -49,7 +49,7 @@ function Map() {
                 sessionStorage.setItem('targetLng',positions.Lng);
                 sessionStorage.setItem('targetLat',positions.Lat);
                 sessionStorage.setItem('targetLat',positions.Lat);
-                window.location.assign("/MiddlePage");
+                window.location.assign("/SeparatePage");
             });
             return null;
         });

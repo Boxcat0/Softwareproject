@@ -47,7 +47,6 @@ function App() {
              <Route exact path="/SeparatePage" element={<SeparatePage />}/>
              <Route exact path="/LoginPage" element={<LoginPage />} />
              <Route exact path="/Map" element={<Map />} />
-             <Route exact path="/MiddlePage" element={<MiddlePage />}/>
              <Route exact path="/CreateInfo" element={<CreateInfo />}/>
            </Routes>
          </div>

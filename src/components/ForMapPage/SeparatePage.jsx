@@ -6,18 +6,33 @@ import {Link} from "react-router-dom";
 import Review from "./ReviewPage";
 import Mini from "./MiniMap";
 import Rev from "../ForUser/Reservation"
+import qs from "qs";
 
 
 function useSeparatePage(){
 
     const [gymData, setgymData] = useState(null);
+    const [gymname,setGymName] = useState("");
     useEffect(()=>{
         axios.get('/SeparatePage').then(res=>setgymData(res.data))
     },[]);
     const [popup, setPopup] = useState(false);
     const [popup2, setPopup2] = useState(false);
     const [popup3, setPopup3] = useState(false);
-    const handleComplete = (data) => {
+    const com =()=>{
+        setGymName(sessionStorage.getItem("targetName"));
+        axios.post('/map_click', qs.stringify({
+            GymName : gymname
+        }))
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+    const handleComplete = () => {
+        com();
         setPopup(!popup);
     }
     const handleComplete2 = (data) => {
@@ -49,7 +64,7 @@ function useSeparatePage(){
                    <button className= "DefaultButton">문의하기</button>
                </div>
                <div>
-                   <textarea className="textArea" rows="10" cols="50" value={gymData || '현재 등록된 설명이 없습니다.'} readOnly />
+                   <textarea className="textArea" rows="10" cols="50" value={gymData.value || '현재 등록된 설명이 없습니다.'} readOnly />
                </div>
                <div>
                    <button className="DefaultButton" onClick={handleComplete}>리뷰 확인하기</button>
