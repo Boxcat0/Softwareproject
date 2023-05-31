@@ -47,8 +47,8 @@ function SlideShow() {
 
     return (
         <div>
-            <button className ="bannerButton" onClick={prevImage}>←</button>
-            <button className ="bannerButton" onClick={nextImage}>→</button>
+            <button className ="DefaultButton" onClick={prevImage}>←</button>
+            <button className ="DefaultButton" onClick={nextImage}>→</button>
             <div style={{ position: 'relative', height: '300px' }}>
                 {transitions((style, i) => (
                     <animated.a

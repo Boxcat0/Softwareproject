@@ -50,9 +50,9 @@ function LoginPage() {
                             <input type="password" id="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="비밀번호를 입력하세요" />
                         </label>
                     </div>
-                    <button className="bannerButton" type="submit">로그인</button>
+                    <button className="DefaultButton" type="submit">로그인</button>
                     <Link to="/chooseCreate">
-                        <button className="bannerButton">회원가입</button>
+                        <button className="DefaultButton">회원가입</button>
                     </Link>
                 </form>
             )}

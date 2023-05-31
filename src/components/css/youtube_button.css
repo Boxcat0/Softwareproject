@@ -16,7 +16,7 @@
     margin-left: 250px;
     margin-bottom: -20px;
 }
-.bannerButton{
+.DefaultButton{
     border: 3px solid #FFC8DD;
     background-color: var(--clr-white);
     color : black;

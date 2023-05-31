@@ -4,7 +4,7 @@ import "../css/Loadingdesign.css"
 import {useNavigate } from "react-router-dom";
 import axios from "axios";
 import qs from "qs";
-import Post from "../ForMapPage/PostFind";
+import Post from "../ForMapPage/PostFind2";
 
 function CreateInfo_t(){
     const [showInputs, setShowInputs] = useState(false);
@@ -113,7 +113,7 @@ function CreateInfo_t(){
                         <input type="text" name="id" value={id} onChange={(e) => setId(e.target.value)} placeholder="아이디를 입력해주세요" />
                         <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="5자리 이상의 비밀번호를 입력해주세요" />
                         <input type="text" id = "Gym_name" name = "Gym_name" value={Gym_name} onChange={(e) => setGym_name(e.target.value)} placeholder="상호명"/>
-                        <input type="text" name="place" placeholder="주소 검색 버튼을 눌러주세요"  required={true} onChange={handleInput} value={enroll_company.address} />
+                        <input type="text" name="address" placeholder="주소 검색 버튼을 눌러주세요" required={true}  value={enroll_company.address} onChange={handleInput} />
                         <div>
                             <button className = "FormButton" onClick={handleComplete}>주소찾기</button>
                             {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}
@@ -129,7 +129,7 @@ function CreateInfo_t(){
                         <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="이름" />
                         <input type="text" name="id" value={id} onChange={(e) => setId(e.target.value)} placeholder="아이디를 입력해주세요" />
                         <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="5자리 이상의 비밀번호를 입력해주세요" />
-                        <input type="text" name="place" placeholder="주소 검색 버튼을 눌러주세요"  required={true} onChange={handleInput} value={enroll_company.address} />
+                        <input type="text" name="address" placeholder="주소 검색 버튼을 눌러주세요" required={true}  value={enroll_company.address} onChange={handleInput} />
                         <div>
                             <button className = "FormButton" onClick={handleComplete}>주소찾기</button>
                             {popup && <Post company={enroll_company} setcompany={setEnroll_company}></Post>}

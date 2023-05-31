@@ -3,7 +3,7 @@ import "../css/Formdesign.css"
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import qs from 'qs';
-import Post from "../ForMapPage/PostFind";
+import Post from "../ForMapPage/PostFind2";
 //import Post from "../ForMapPage/PostFind";
 
 function CreateInfo() {

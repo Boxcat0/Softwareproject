@@ -15,13 +15,13 @@ function MiddleSelect(){
                     <button className="modalBackbutton" onClick={handleModal}></button>
                 </div>
                 <div className="CommunityMenu">
-                    <button className="bannerButton">자유게시판</button>
+                    <button className="DefaultButton">자유게시판</button>
                 </div>
                 <div className="CommunityMenu">
-                    <button className="bannerButton">회원권 사고 팔기</button>
+                    <button className="DefaultButton">회원권 사고 팔기</button>
                 </div>
                 <div className="CommunityMenu">
-                    <button className="bannerButton">구인구직</button>
+                    <button className="DefaultButton">구인구직</button>
                 </div>
             </div>
         </div>

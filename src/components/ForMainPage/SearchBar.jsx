@@ -54,7 +54,7 @@ function SearchBar() {
             <form className="form" onSubmit={handleSubmit}>
             <label>
                 <input type="text" name="search" id = "search" placeholder="어디서 근육 커질래?"  required={true} onChange={handleInput} value={enroll_company.address} />
-                <button className= "bannerButton" onClick={handleComplete}>
+                <button className= "DefaultButton" onClick={handleComplete}>
                     <div className= "icon">
                         <img src={`${process.env.PUBLIC_URL}/search.ico`} alt="search" />
                     </div>

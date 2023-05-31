@@ -4,7 +4,7 @@ import "../css/youtube_button.css"
 import Review from "../ForUser/Review"
 import axios from "axios";
 
-const ReviewPage = (props) =>{
+const ReviewPage = () =>{
     const handleModal =() =>{
         console.log("false");
         window.location.assign("/SeparatePage");
@@ -14,7 +14,7 @@ const ReviewPage = (props) =>{
         setPopup(!popup);
     }
     const [lastIdx, setLastIdx] = useState(0);
-    const [Datas, setDatas] = useState([{
+    const [Data, setData] = useState([{
         id :'',
         rate : '',
         review : ''
@@ -30,7 +30,7 @@ const ReviewPage = (props) =>{
                         review : rowData.review
                     })
             )
-            setDatas(Datas.concat(inputData))
+            setData(Data.concat(inputData))
         } catch(e){
             console.error(e.message);
         }
@@ -50,7 +50,7 @@ const ReviewPage = (props) =>{
                     <input type="submit" value="검색"/>
                 </form>
                 {lastIdx !==0 ?
-                    Datas.map(rowData =>(
+                    Data.map(rowData =>(
                         rowData.id !== ''&&
                             <tr>
                                 <td>{rowData.id}</td>
@@ -64,7 +64,7 @@ const ReviewPage = (props) =>{
 
                 }
                 <div>
-                    <button className="bannerButton" onClick={handleComplete}>리뷰 작성하기</button>
+                    <button className="DefaultButton" onClick={handleComplete}>리뷰 작성하기</button>
                     {popup&& <Review></Review>}
                 </div>
             </div>
