@@ -40,3 +40,12 @@ data class Review(
 data class EventGym(
     val gymname: String =  "",
 )
+
+@Document("Reservation")
+data class Reservation(
+    val name: String = "",
+    val id: String = "",
+    val gymname: String = "",
+    val fee: Int = 0,
+    val say: String = "",
+)

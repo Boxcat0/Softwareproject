@@ -10,7 +10,7 @@ function Reservation(){
     const [say, setSay] = useState("");
     const [id, setId] = useState("");
     const [number, setNumber] = useState("");
-    const [gym_name, setGymname] = useState("");
+    const [gymname, setGymname] = useState("");
     const handleModal = () => {
         console.log('false');
         window.location.assign('/SeparatePage');
@@ -22,15 +22,16 @@ function Reservation(){
         }
         handleSubmit(e);
     };
-    const handleSubmit =(e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('/Reservation', qs.stringify({
-            name : name,
-            id : id,
-            gym_name : gym_name,
-            fee : number,
-            say : say
-        }))
+        axios
+            .post('/Reservation', {
+                name: name,
+                id: sessionStorage.getItem('ID'),
+                gymname: sessionStorage.getItem('targetName'),
+                fee: number,
+                say: say,
+            })
             .then((response)=>{
                 console.log(response.data);
                 console.log("success");
@@ -50,8 +51,6 @@ function Reservation(){
                 <h2>예약페이지 입니다.</h2>
                 <form method="post" onSubmit={checkRev}>
                     <input type="text" name = "name" value ={name} placeholder="예약자 성함을 입력해주세요" onChange={(e) => setName(e.target.value)}/>
-                    <input type="hidden" name ="id" value ={id} onChange={(e) => setId(sessionStorage.getItem("ID"))}/>
-                    <input type="hidden" name ="gym_name" value={gym_name} onChange={(e) => setGymname(sessionStorage.getItem("targetName"))}/>
                     <label className ="RevLabel">
                         <input type="number" min="0" name = "number" value ={number} placeholder="등록기간"  onChange = {(e)=>setNumber(e.target.value)} />
                     </label>
