@@ -19,23 +19,30 @@ function useSeparatePage(){
     const [popup, setPopup] = useState(false);
     const [popup2, setPopup2] = useState(false);
     const [popup3, setPopup3] = useState(false);
-    const com =()=>{
-        axios.post('/map_click', qs.stringify({
-            gymname
-        }))
+    const com = () => {
+        axios
+            .post('/map_click', JSON.stringify({ gymname }), {
+                headers: { 'Content-Type': 'application/json' }
+            })
             .then((response) => {
                 console.log(response.data);
             })
             .catch((error) => {
                 console.error(error);
             });
-    }
+    };
+
     const handleComplete = () => {
-        let target =sessionStorage.getItem("targetName");
+        let target = sessionStorage.getItem("targetName");
+        console.log(target); // 업데이트되기 전 target 값 출력
         setGymName(target);
-        com();
         setPopup(!popup);
-    }
+    };
+
+    useEffect(() => {
+        console.log(gymname); // 업데이트된 gymname 값 출력
+        com();
+    }, [gymname]);
     const handleComplete2 = (data) => {
         setPopup2(!popup2);
     }

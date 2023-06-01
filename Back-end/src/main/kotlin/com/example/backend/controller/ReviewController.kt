@@ -9,11 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.util.*
 
 
 @RestController
 class ReviewController(@Autowired private var reviewRepository: ReviewRepository,@Autowired val eventGymRepo: EventGymRepo) {
-
+    private var gymname: String = ""
     @PostMapping("/Review")
     fun reviewSave(review: Review, @RequestHeader("userId") userId: String?, session: HttpSession): ResponseEntity<String> {
         try {
@@ -33,14 +34,18 @@ class ReviewController(@Autowired private var reviewRepository: ReviewRepository
         }
     }
     @GetMapping("/ReviewPage")
-    fun reviewView(session : HttpSession, data : EventGym)
+    fun reviewView(session : HttpSession)
     {
+
     }
+    // gymname 변수에 받아온 데이터 저장
     @PostMapping("/map_click")
-    fun asdasdf(session: HttpSession,@RequestBody data: Any?)
+    fun findGymName(session: HttpSession, @RequestBody data: EventGym?)
     {
-        println(data)
+        gymname = data?.gymname ?: "";
+        println(gymname)
     }
+
 }
 
 
