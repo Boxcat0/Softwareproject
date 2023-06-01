@@ -49,3 +49,11 @@ data class Reservation(
     val fee: Int = 0,
     val say: String = "",
 )
+@Document ("FreeBoard")
+data class FreeBoard(
+    val number: Int = 0,
+    val writtenDate: Date,
+    val viewCounts: Int = 0,
+    val contents: String = "",
+    val comments: Arrays
+)
