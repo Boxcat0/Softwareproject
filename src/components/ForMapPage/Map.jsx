@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../css/map.css";
 import gym_data from "../JsonFile/gym_data.json";
 import gym_data_seoul from "../JsonFile/gymdata.json";
+import axios from "axios";
 
 function Map() {
     let latitude = parseFloat(sessionStorage.getItem("latitude"));
@@ -49,6 +50,17 @@ function Map() {
                 sessionStorage.setItem('targetLng',positions.Lng);
                 sessionStorage.setItem('targetLat',positions.Lat);
                 sessionStorage.setItem('targetLat',positions.Lat);
+                let gymname = sessionStorage.getItem("targetName");
+                axios
+                    .post('/map_click', JSON.stringify({ gymname }), {
+                        headers: { 'Content-Type': 'application/json' }
+                    })
+                    .then((response) => {
+                        console.log(response.data);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
                 window.location.assign("/SeparatePage");
             });
             return null;

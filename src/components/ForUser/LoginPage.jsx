@@ -22,6 +22,7 @@ function LoginPage(key, value) {
        }))
            .then((response) => {
                console.log("success");
+               SendId();
                sessionStorage.setItem("isLoggedIn","true");
                sessionStorage.setItem("ID",username);
                document.location.href ="/";
@@ -31,7 +32,20 @@ function LoginPage(key, value) {
                console.error(error);
            });
     };
-
+    const SendId =() =>
+    {
+        let Id = sessionStorage.getItem("ID");
+        axios
+            .post('/Send_ID', JSON.stringify({Id}), {
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
     return (
         <div className="login">
             {isLoggedIn ? (
