@@ -107,6 +107,7 @@ class CreateInfoController(@Autowired val memberRepo: MemberRepo,
             val account = memberRepo.findById(id).orElse(null)
 
             if (account != null && passwordEncoder.matches(password, account.password)) {
+                session.setAttribute("userId",id)
                 return ResponseEntity.ok("{\"message\": \"로그인 성공\"}")
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"message\": \"유효하지 않은 아이디 또는 비밀번호입니다\"}")
