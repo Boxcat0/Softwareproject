@@ -1,5 +1,6 @@
 package com.example.backend.models
 
+import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDate
 import java.util.*
@@ -55,5 +56,32 @@ data class FreeBoard(
     val writtenDate: Date,
     val viewCounts: Int = 0,
     val contents: String = "",
-    val comments: Arrays
+    val comments: List<Reply> = emptyList()
+)
+@Document("Reply")
+data class Reply(
+    @Id
+    val id: String? = null,
+    val content: String,
+    val userId: String,
+    val commentId: String
+)
+// 중고거래
+@Document("UsedItem")
+data class UsedItem(
+    @Id
+    val id: String? = null,
+    val itemName: String,
+    val itemPrice: Int = 0,
+    val date: LocalDate = LocalDate.now()
+)
+// 구인구직
+@Document("Job")
+data class Job(
+    @Id
+    val id: String? = null,
+    val jobName: String,
+    val isPersonal: Boolean?, // 개인이면 True, 헬스장 소속이면 False
+    val gymmname: String?, // isPersonal이 false이면 입력
+    val date: LocalDate = LocalDate.now()
 )

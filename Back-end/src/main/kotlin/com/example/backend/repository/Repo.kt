@@ -29,3 +29,15 @@ interface EventGymRepo : MongoRepository<EventGym, String>
 @EnableMongoRepositories
 @Repository
 interface ReviewRepo : MongoRepository<Review, String>
+{
+    fun findByGym(gym: String): List<Review>
+}
+@EnableMongoRepositories
+@Repository
+interface FreeBoardRepo : MongoRepository<Review, String>
+@EnableMongoRepositories
+@Repository
+interface UsedItemRepo : MongoRepository<UsedItem, String>
+@EnableMongoRepositories
+@Repository
+interface JobRepo : MongoRepository<Job, String>

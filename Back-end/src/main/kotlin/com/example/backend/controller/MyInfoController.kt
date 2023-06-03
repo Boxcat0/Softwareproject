@@ -11,9 +11,7 @@ class MyInfoController(@Autowired val memberRepo: MemberRepo,
                        private val session: HttpSession) {
     @GetMapping("/MyInfo")
     fun findMember(): Any {
-
         var id = session.getAttribute("userId").toString()
-        println(session.getAttribute("userId") as? String)
         return memberRepo.findById(id).orElse(null)
     }
 }
