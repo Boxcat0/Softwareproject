@@ -1,13 +1,11 @@
 package com.example.backend.controller
 
-import com.example.backend.repository.MemberRepo
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.*
-import java.util.*
+import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/Account")
-class Controller(@Autowired val memberRepo: MemberRepo) {
+//@RequestMapping("/Account")
+class Controller(//@Autowired val memberRepo: MemberRepo
+ ) {
 
 
   /*  @GetMapping

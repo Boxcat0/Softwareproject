@@ -24,8 +24,9 @@ interface TrainerRepo : MongoRepository<Trainer, String>
 @EnableMongoRepositories
 @Repository
 interface EventGymRepo : MongoRepository<EventGym, String>
+{
 
-
+}
 @EnableMongoRepositories
 @Repository
 interface ReviewRepo : MongoRepository<Review, String>
@@ -35,9 +36,18 @@ interface ReviewRepo : MongoRepository<Review, String>
 @EnableMongoRepositories
 @Repository
 interface FreeBoardRepo : MongoRepository<Review, String>
+{
+
+}
 @EnableMongoRepositories
 @Repository
 interface UsedItemRepo : MongoRepository<UsedItem, String>
+{
+
+}
 @EnableMongoRepositories
 @Repository
 interface JobRepo : MongoRepository<Job, String>
+{
+
+}
