@@ -17,7 +17,6 @@ import CreateInfoTrainer from "./components/ForUser/CreateInfotrainer";
 import MiddleSelect from "./components/ForUser/MiddleSelect_CreateInfo";
 import FindPage from "./components/ForMapPage/FindPage";
 import SeparatePage from "./components/ForMapPage/SeparatePage";
-import MiddlePage from "./components/ForMapPage/MiddlePage";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);

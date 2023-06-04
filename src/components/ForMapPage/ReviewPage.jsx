@@ -6,6 +6,10 @@ import axios from "axios";
 
 const ReviewPage = () =>{
     let trigger = sessionStorage.getItem("isLoggedIn");
+    const [ex,setEx] = useState(false);
+    const handleExpand =() =>{
+        setEx(!ex);
+    }
     const handleModal =() =>{
         console.log("false");
         window.location.assign("/SeparatePage");
@@ -14,27 +18,21 @@ const ReviewPage = () =>{
     const handleComplete = (data) => {
         setPopup(!popup);
     }
-    //const [lastIdx, setLastIdx] = useState(0);
-    const [Data, setData] = useState([{
-        id :'',
-        rate : '',
-        review : ''
-    }])
+    const [Data, setData] = useState([])
     useEffect(()=> {
         const url = "/ReviewPage";
         axios
             .get(url)
             .then((res)=>{
                 setData(res.data);
-                console.log("성공");
             })
             .catch((Error) =>{
                 console.log(Error);
             })
     })
     return(
-        <div className="modal">
-            <div className= "modal-container">
+        <div className="modal_reviews">
+            <div className= "modal-container_reviews">
                 <div>
                     <button className="modalBackbutton" onClick={handleModal}></button>
                 </div>
@@ -46,29 +44,66 @@ const ReviewPage = () =>{
                     <input type="text" name="reviews"/>
                     <input type="submit" value="검색"/>
                 </form>
-                {Data ?
-                    Data.map(rowData =>(
-                        rowData.id !== ''&&
-                            <tr>
-                                <td>{rowData.id}</td>
-                                <td>{rowData.rate}</td>
-                                <td>{rowData.review}</td>
-                            </tr>
-                    )):
-                    <tr>
-                        <h3> 저장된 리뷰가 없습니다. 리뷰를 작성해주세요!</h3>
-                    </tr>
-
-                }
-                {trigger?(
+                {trigger ? (
                     <div>
-                        <button className="DefaultButton" onClick={handleComplete}>리뷰 작성하기</button>
-                        {popup&& <Review></Review>}
+                        <div>
+                            <button className="DefaultButton" onClick={handleComplete}>리뷰 작성하기</button>
+                            {popup && <Review></Review>}
+                        </div>
+                        <div>
+                            <br/>
+                        </div>
                     </div>
-                ):(
+                ) : (
                     <div>
                     </div>
-                )
+                )}
+                {Data.length > 0 ?
+                    Data.map((rowData)=>(
+                        <div>
+                            <div className="ShowReview">
+                               <div className="NameAndStar">
+                                   {rowData.userId} | {'  '}
+                                   {rowData.star.toFixed(1)}<br/>
+                               </div>
+                                <div>
+                                    {rowData.reviews.length >= 20 ? (
+                                        <div>
+                                            {ex?(
+                                                <div>
+                                                    <span>{rowData.reviews}</span>
+                                                    <button className="ReviewButton" onClick={() => handleExpand(rowData.reviews)}>
+                                                        <div className ="buttonType">
+                                                            접기
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            ):(
+                                                <div>
+                                                    <span>{rowData.reviews.slice(0, 20)}</span>
+                                                    <button className="ReviewButton" onClick={() => handleExpand(rowData.reviews)}>
+                                                        <div className ="buttonType">
+                                                            더 보기
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <span>{rowData.reviews}</span>
+                                    )}
+                                </div>
+                                <div className="showDate">
+                                    날짜:{rowData.date}
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    )): (
+                        <div>
+                            <h3> 저장된 리뷰가 없습니다. 리뷰를 작성해주세요!</h3>
+                        </div>
+                    )
                 }
             </div>
         </div>

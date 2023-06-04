@@ -59,3 +59,22 @@
     background-color: var(--clr-white);
     color : black;
 }
+
+.ReviewLabel {
+    border: 1px solid black;
+    background-color: var(--clr-white);
+    color : black;
+}
+.ShowReview{
+    font-size: 20px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    border : 1px solid black;
+    display: grid;
+    place-items: center; /* 수직 및 수평 가운데 정렬 */
+    padding: 10px;
+    /* 추가적인 스타일링 규칙 */
+}
+
+.showDate{
+    font-size : 13px;
+}

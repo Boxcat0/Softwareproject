@@ -21,3 +21,15 @@
     background-color: var(--clr-white);
     color : black;
 }
+
+.ReviewButton{
+    border: 3px solid #FFC8DD;
+    background-color: var(--clr-white);
+    color : black;
+    width : 70px;
+    height : 35px;
+}
+.buttonType{
+    font-size : 13px;
+}
+

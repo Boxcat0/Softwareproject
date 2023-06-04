@@ -2,15 +2,10 @@ import React, {useState} from 'react';
 import "../css/youtube_button.css"
 import "../css/Formdesign.css"
 import axios from "axios";
-import qs from 'qs';
-import Post from "../ForMapPage/PostFind2";
-
 function Reservation(){
     const [name, setName] = useState("");
     const [say, setSay] = useState("");
-    const [id, setId] = useState("");
     const [number, setNumber] = useState("");
-    const [gymname, setGymname] = useState("");
     const handleModal = () => {
         console.log('false');
         window.location.assign('/SeparatePage');

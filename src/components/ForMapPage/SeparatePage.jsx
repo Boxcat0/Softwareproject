@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
 import "../css/map.css"
 import "../css/youtube_button.css"
@@ -6,7 +6,6 @@ import {Link} from "react-router-dom";
 import Review from "./ReviewPage";
 import Mini from "./MiniMap";
 import Rev from "../ForUser/Reservation"
-import qs from "qs";
 
 
 function useSeparatePage(){
@@ -19,7 +18,7 @@ function useSeparatePage(){
     const [popup, setPopup] = useState(false);
     const [popup2, setPopup2] = useState(false);
     const [popup3, setPopup3] = useState(false);
-    const com = () => {
+    const com = useCallback(() => {
         axios
             .post('/map_click', JSON.stringify({ gymname }), {
                 headers: { 'Content-Type': 'application/json' }
@@ -30,7 +29,7 @@ function useSeparatePage(){
             .catch((error) => {
                 console.error(error);
             });
-    };
+    },[gymname])
 
     const handleComplete = () => {
         let target = sessionStorage.getItem("targetName");
@@ -42,7 +41,7 @@ function useSeparatePage(){
     useEffect(() => {
         console.log(gymname); // 업데이트된 gymname 값 출력
         com();
-    }, [gymname]);
+    }, [gymname,com]);
     const handleComplete2 = (data) => {
         setPopup2(!popup2);
     }

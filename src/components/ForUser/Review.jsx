@@ -7,7 +7,6 @@ import qs from "qs";
 
 function useReview() {
     const userName = sessionStorage.getItem('ID');
-    const gymName = sessionStorage.getItem('targetName');
     const [rate, setRate] = useState(0);
 
     useEffect(() => {
@@ -16,6 +15,8 @@ function useReview() {
             item.checked = idx < rate;
         });
         document.getElementById('rate').value = rate;
+        console.log(document.getElementById('rate').value);
+        console.log("별점 : "+ rate);
     }, [rate]);
 
     const handleClick = (newRate) => {
@@ -28,8 +29,7 @@ function useReview() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        const rate = parseInt(document.getElementById('rate').value);
+        const rate = document.getElementById('rate').value;
         if (!rate) {
             showMessage('review_rating');
             return;
@@ -44,12 +44,13 @@ function useReview() {
 
         alert(`별점: ${rate}\n내용: ${review}\n아이디: ${userName}`);
         reviewTextArea.value = '';
-        axios.post('/Review', qs.stringify({
-            id: userName,
-            gym : gymName,
-            star : rate,
-            reviews : review
-        })).then((response) => {
+        axios
+            .post('/Review', qs.stringify({
+                id: sessionStorage.getItem("ID"),
+                gym : sessionStorage.getItem("targetName"),
+                star : rate,
+                reviews : review
+            })).then((response) => {
             console.log(response.data);
             window.location.assign('/SeparatePage');
         })
@@ -73,12 +74,10 @@ function useReview() {
                     <button className="modalBackbutton" onClick={handleModal}></button>
                 </div>
                 <form method="post" onSubmit={handleSubmit}>
-                    <input type="hidden" name="id" value={userName} />
-                    <input type="hidden" name="gym" value={gymName} />
-                    <input type="hidden" name="rate" id="rate" value="0" />
                     <p className="title_star">
                         <h2>별점과 리뷰를 남겨주세요.</h2>
                     </p>
+                    <input type="hidden" name="rate" id="rate" />
                     <div className="review_rating">
                         <div className="warning_msg">별점을 선택해 주세요.</div>
                         <div className="rating">
