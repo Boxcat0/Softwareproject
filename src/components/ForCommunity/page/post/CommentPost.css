@@ -1,0 +1,22 @@
+.comment-container {
+  background: #f2f2f2;
+  padding: 3000px;
+  height: 150px; /* 원하는 댓글 작성 칸의 높이를 설정해주세요 */
+  overflow: auto;
+}
+
+.comment-textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+}
+
+.comment-button {
+  margin-top: 10px;
+}
+.comment-textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+}
