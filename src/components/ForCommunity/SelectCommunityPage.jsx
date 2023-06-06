@@ -13,17 +13,18 @@ function MiddleSelect() {
     navigate('/mainPage');
   };
 
-  const handleMenuClick = (menu) => {
-    setSelectedMenu(menu);
-    setShowModal(false); // 모달 창을 닫음
-    if (menu === '자유게시판') {
-      navigate('/postMain');
-    } else if (menu === '회원권 사고 팔기') {
-      navigate('/sellMembership');
-    } else if (menu === '구인구직') {
-      navigate('/jobPost');
-    }
-  };
+ const handleMenuClick = (menu) => {
+   setSelectedMenu(menu);
+   setShowModal(false); // 모달 창을 닫음
+   if (menu === '자유게시판') {
+     navigate('/PostMain');
+   } else if (menu === '회원권 사고 팔기') {
+     navigate('/SellMembership');
+   } else if (menu === '구인구직') {
+     navigate('/JobPostMain');
+   }
+ };
+
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PostCreate = ({ onPostCreate, onClose }) => {
+const JobPostCreate = ({ onJobCreate, onClose }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -14,7 +14,7 @@ const PostCreate = ({ onPostCreate, onClose }) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    onPostCreate(title, content);
+    onJobCreate(title, content);
     onClose();
     setTitle('');
     setContent('');
@@ -48,4 +48,4 @@ const PostCreate = ({ onPostCreate, onClose }) => {
   );
 };
 
-export default PostCreate;
+export default JobPostCreate;

@@ -18,7 +18,10 @@ import MiddleSelect from "./components/ForUser/MiddleSelect_CreateInfo";
 import FindPage from "./components/ForMapPage/FindPage";
 import SeparatePage from "./components/ForMapPage/SeparatePage";
 import PostMain from './components/ForCommunity/page/post/PostMain';
-import PostViews from './components/ForCommunity/page/post/PostViews'; // 추가: PostViews 컴포넌트를 불러옴
+import PostViews from './components/ForCommunity/page/post/PostViews';
+import JobPostMain from './components/ForCommunity/page/post/JobPostMain';
+import JobPostViews from './components/ForCommunity/page/post/JobPostViews';
+
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -50,7 +53,10 @@ function App() {
             <Route exact path="/Map" element={<Map />} />
             <Route exact path="/CreateInfo" element={<CreateInfo />} />
             <Route exact path="/PostMain" element={<PostMain />} />
-            <Route exact path="/postView/:postId" element={<PostViews />} /> {/* 추가: 게시물 상세보기 라우트 */}
+            <Route exact path="/PostView/:postId" element={<PostViews />} />
+            <Route exact path="/JobPostMain" element={<JobPostMain />} />
+            <Route exact path="/JobPostView/:jobId" element={<JobPostViews />} />
+
           </Routes>
         </div>
       </BrowserRouter>
