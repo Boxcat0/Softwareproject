@@ -57,19 +57,6 @@ const PostView = () => {
 
         <CommentPost onCommentSubmit={handleCommentSubmit} />
 
-        <div className="comments">
-          <h3>댓글</h3>
-          {comments.length > 0 ? (
-            comments.map((comment, index) => (
-              <div key={index} className="comment-item">
-                {comment}
-              </div>
-            ))
-          ) : (
-            <div>댓글이 없습니다.</div>
-          )}
-        </div>
-
         <button className="post-view-go-list-btn" onClick={handleGoBack}>
           목록으로 돌아가기
         </button>

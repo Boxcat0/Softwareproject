@@ -1,90 +1,89 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { getJobByNo } from '../../JobData';
-import CommentPost from './CommentPost';
-import './Post.css';
+import React, { useState, useEffect } from 'react';
+import { Input, Button } from 'antd';
+import './CommentPost.css';
 
-const JobPostViews = () => {
-  const navigate = useNavigate();
-  const { jobId } = useParams();
-  const [job, setJob] = useState({});
+const CommentPost = ({ postId }) => {
+  const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const jobData = getJobByNo(jobId);
-      if (jobData) {
-        setJob(jobData);
-        setComments(jobData.comments);
-      } else {
-        navigate('/JobPostMain');
-      }
-    };
+    // Your useEffect logic here
+  }, [postId]);
 
-    fetchData();
-  }, [jobId, navigate]);
-
-  const handleGoBack = () => {
-    navigate('/JobPostMain');
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
   };
 
-  const handleCommentSubmit = (comment) => {
-    setComments([...comments, comment]);
+  const handleAddComment = () => {
+    if (comment.trim() !== '') {
+      const newComment = {
+        id: comments.length + 1,
+        postId,
+        content: comment,
+        likes: 0,
+        isLiked: false,
+      };
+      setComments([...comments, newComment]);
+      setComment('');
+    }
+  };
+
+  const handleLike = (commentId) => {
+    const updatedComments = comments.map((comment) => {
+      if (comment.id === commentId) {
+        if (comment.isLiked) {
+          return {
+            ...comment,
+            likes: comment.likes - 1,
+            isLiked: false,
+          };
+        } else {
+          return {
+            ...comment,
+            likes: comment.likes + 1,
+            isLiked: true,
+          };
+        }
+      }
+      return comment;
+    });
+    setComments(updatedComments);
   };
 
   return (
-    <>
-      <h2 align="center">게시글 상세정보</h2>
-
-      <div className="post-view-wrapper">
-        {job ? (
-          <>
-            <div className="post-view-row">
-              <label>게시글 번호</label>
-              <label>{job.no}</label>
-            </div>
-            <div className="post-view-row">
-              <label>제목</label>
-              <label>{job.title}</label>
-            </div>
-            <div className="post-view-row">
-              <label>작성일</label>
-              <label>{job.createDate}</label>
-            </div>
-            <div className="post-view-row">
-              <label>조회수</label>
-              <label>{job.readCount}</label>
-            </div>
-            <div className="post-view-row">
-              <label>내용</label>
-              <div>{job.content}</div>
-            </div>
-          </>
-        ) : (
-          '해당 게시글을 찾을 수 없습니다.'
-        )}
-
-        <CommentPost onCommentSubmit={handleCommentSubmit} />
-
-        <div className="comments">
-          <h3>댓글</h3>
-          {comments && comments.length > 0 ? (
-            comments.map((comment, index) => (
-              <div key={index} className="comment-item">
-                {comment}
-              </div>
-            ))
-          ) : (
-            <div>댓글이 없습니다.</div>
-          )}
-        </div>
-
-        <button className="post-view-go-list-btn" onClick={handleGoBack}>
-          목록으로 돌아가기
-        </button>
+    <div className="comment-post-container">
+      <h4 className="comment-post-title">댓글 작성</h4>
+      <div className="comment-post-input-container">
+        <Input
+          value={comment}
+          onChange={handleCommentChange}
+          placeholder="댓글을 입력하세요."
+        />
+        <Button type="primary" onClick={handleAddComment} className="comment-post-submit-button">
+          <span className="comment-post-submit-text">작성</span>
+        </Button>
       </div>
-    </>
+      <div className="comment-post-list">
+        {comments.map((comment) => (
+          <div key={comment.id} className="comment-post-item">
+            <div className="comment-post-content">
+              <span>{comment.content}</span>
+            </div>
+            <div className="comment-post-likes">
+              <Button
+                type={comment.isLiked ? 'primary' : 'default'}
+                className={`comment-post-like-button ${comment.isLiked ? 'liked' : ''}`}
+                onClick={() => handleLike(comment.id)}
+              >
+                {comment.isLiked ? '♥' : '♡'}
+              </Button>
+              <span className="comment-post-likes-count">{comment.likes}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
-export default JobPostViews;
+export default CommentPost;

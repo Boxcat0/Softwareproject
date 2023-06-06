@@ -5,11 +5,13 @@ import CommonTableColumn from '../../component/table/CommonTableColumn';
 import CommonTableRow from '../../component/table/CommonTableRow';
 import { jobList, addJob } from '../../JobData';
 import JobPostCreate from './JobPostCreate';
+import './Post.css'
 
 const JobPostList = () => {
   const navigate = useNavigate();
   const [dataList, setDataList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     setDataList(jobList);
